@@ -1,23 +1,30 @@
-import { allcardsfetch } from "@/actions/allcardsfetch";
+import { Cardsbyid } from "@/actions/cardsbyId";
+import { Cardsbyname } from "@/actions/cardsbyname";
 import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
 import { LuSwords, LuShield } from "react-icons/lu";
 interface props {
-  params: { cardId: number };
+  params: {
+    cardId: number | string;
+  };
 }
+
 export default async function AboutCard({ params }: props) {
-  const data = await allcardsfetch();
-  const card = data?.filter((cards) => cards.id == params.cardId)[0];
+  const param = Number(params.cardId);
+  let card;
+  if (Number.isNaN(param)!) {
+    const data = await Cardsbyname(params.cardId);
+    card = data;
+  } else {
+    const data = await Cardsbyid(param);
+    card = data;
+  }
   const atributteImg = getAtributteImg(card?.attribute);
   const raceImg = getType(card?.race);
-  console.log(card);
-  console.log(atributteImg);
-  console.log(raceImg);
-
   return (
     <>
       {card ? (
-        <div>
+        <div key={card.id}>
           <img src={card.card_images[0].image_url_small} alt={card.name} />
           <p>{card.name}</p>
           <p>Type: {card.type}</p>
@@ -77,12 +84,9 @@ export default async function AboutCard({ params }: props) {
               <span>LINK-{card.linkval}</span>
             </div>
           ) : null}
-
-          <p></p>
-          <p></p>
         </div>
       ) : (
-        <p>não existe</p>
+        <img width="600px" src="/img/404.jpeg" alt="" />
       )}
     </>
   );

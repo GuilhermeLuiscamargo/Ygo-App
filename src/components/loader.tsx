@@ -1,7 +1,3 @@
 export function Loader() {
-  return (
-    <div>
-      <span>Carregando....</span>
-    </div>
-  );
+  return <img width="30px" src="/img/loader-spin.svg" alt="loading..." />;
 }
