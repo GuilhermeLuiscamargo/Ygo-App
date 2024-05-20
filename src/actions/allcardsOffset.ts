@@ -1,7 +1,6 @@
 "use server";
-export const allcardsOffset = async (offset: number) => {
+export const allcardsOffset = async (offset: number, num: number) => {
   try {
-    const num: number = 12;
     const res = await fetch(
       `https://db.ygoprodeck.com/api/v7/cardinfo.php?&num=${num}&offset=${offset}`
     );

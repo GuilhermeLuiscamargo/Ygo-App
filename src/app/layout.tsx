@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { IoSearch } from "react-icons/io5";
 import Link from "next/link";
-import { Search } from "@/components/search";
+import CardSearch from "@/components/search";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +28,7 @@ export default function RootLayout({
               <Link href={"/filtro"}>Filtro</Link>
             </div>
             <div>
-              <Search />
+              <CardSearch />
             </div>
           </nav>
         </header>

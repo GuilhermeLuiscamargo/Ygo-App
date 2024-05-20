@@ -15,7 +15,7 @@ export function CarregarCards() {
   const loadMoreCards = async () => {
     await delay(1300);
     const nextPage = page;
-    const newProducts = (await allcardsOffset(nextPage)) ?? [];
+    const newProducts = (await allcardsOffset(nextPage, 12)) ?? [];
     setCards((prevProducts: individualCard[]) => [
       ...prevProducts,
       ...newProducts,

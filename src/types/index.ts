@@ -25,3 +25,9 @@ interface individualCard {
 interface individualCardProps {
   cards: individualCard[] | null;
 }
+interface searchCards {
+  name: string;
+  race: string;
+  attribute?: string;
+  img: string;
+}
