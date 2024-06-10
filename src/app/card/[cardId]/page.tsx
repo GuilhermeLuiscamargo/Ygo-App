@@ -1,24 +1,16 @@
-import { Cardsbyid } from "@/actions/cardsbyId";
 import { Cardsbyname } from "@/actions/cardsbyname";
 import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
 import { LuSwords, LuShield } from "react-icons/lu";
 interface props {
   params: {
-    cardId: number | string;
+    cardId: string;
   };
 }
 
 export default async function AboutCard({ params }: props) {
-  const param = Number(params.cardId);
-  let card;
-  if (Number.isNaN(param)!) {
-    const data = await Cardsbyname(params.cardId);
-    card = data;
-  } else {
-    const data = await Cardsbyid(param);
-    card = data;
-  }
+  const cardUrlName = params.cardId;
+  const card = await Cardsbyname(cardUrlName);
   const atributteImg = getAtributteImg(card?.attribute);
   const raceImg = getType(card?.race);
   return (
@@ -86,7 +78,7 @@ export default async function AboutCard({ params }: props) {
           ) : null}
         </div>
       ) : (
-        <img width="600px" src="/img/404.jpeg" alt="" />
+        <img width="600px" src="/img/404.jpeg" alt="aconteceu um erro " />
       )}
     </>
   );

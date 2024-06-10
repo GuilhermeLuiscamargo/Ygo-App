@@ -62,5 +62,7 @@ export function getType(race: string | undefined) {
       return "/img/tipos/Psychic.webp";
     case "Normal":
       return "/img/tipos/Normal.svg";
+    case "Fiend":
+      return "/img/tipos/Fiend.webp";
   }
 }

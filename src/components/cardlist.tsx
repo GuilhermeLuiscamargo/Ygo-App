@@ -7,7 +7,7 @@ export function CardList({ cards }: individualCardProps) {
         {cards ? (
           cards.map((card) => {
             return (
-              <Link href={`/card/${card.name}`}>
+              <Link key={card.id} href={`/card/${card.name}`}>
                 <img
                   key={card.id}
                   width="400px"

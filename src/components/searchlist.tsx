@@ -42,8 +42,11 @@ function SearchList({
             const attributeImg = getAtributteImg(card.attribute);
             const raceImg = getType(card.race);
             return (
-              <div>
-                <Link href={`/card/${card.name}`}>
+              <div key={`search=${card.id}`}>
+                <Link
+                  href={`/card/${card.name}`}
+                  onClick={() => setSearchString("")}
+                >
                   <div>
                     <img width="50px" src={card.img} alt="" />
                     {card.name}

@@ -23,11 +23,23 @@ interface individualCard {
   ];
 }
 interface individualCardProps {
-  cards: individualCard[] | null;
+  cards: individualCard[] | undefined;
 }
 interface searchCards {
   name: string;
   race: string;
   attribute?: string;
   img: string;
+  id: number;
+}
+interface fillInputs {
+  type?: string | undefined;
+  atk?: string;
+  def?: string;
+  level?: string;
+  linkval?: string;
+  scale?: string;
+  race?: string;
+  attribute?: string;
+  archetype?: string;
 }

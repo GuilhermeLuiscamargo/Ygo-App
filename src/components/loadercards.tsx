@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { Loader } from "./loader";
 import { CardList } from "./cardlist";
 
-export function CarregarCards() {
+export function CarregarCards({ filter }: any) {
   const [cards, setCards] = useState<individualCard[]>([]);
   const [page, setPage] = useState(12);
   const [ref, inView] = useInView();
@@ -15,12 +15,15 @@ export function CarregarCards() {
   const loadMoreCards = async () => {
     await delay(1300);
     const nextPage = page;
-    const newProducts = (await allcardsOffset(nextPage, 12)) ?? [];
-    setCards((prevProducts: individualCard[]) => [
-      ...prevProducts,
-      ...newProducts,
-    ]);
-    setPage(nextPage + 12);
+    if (filter) {
+      const newCards = (await allcardsOffset(nextPage, 12, filter)) ?? [];
+      setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
+      setPage(nextPage + 12);
+    } else {
+      const newCards = (await allcardsOffset(nextPage, 12)) ?? [];
+      setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
+      setPage(nextPage + 12);
+    }
   };
   useEffect(() => {
     if (inView) {
