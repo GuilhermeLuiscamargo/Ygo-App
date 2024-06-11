@@ -5,17 +5,17 @@ import { CardList } from "@/components/cardlist";
 import { CarregarCards } from "@/components/loadercards";
 import { useState } from "react";
 
-export default function Filtro() {
-  const [atk, setAtk] = useState<string>();
-  const [def, setDef] = useState<string>();
-  const [level, setLevel] = useState<string>();
-  const [link, setLink] = useState<string>();
-  const [scale, setScale] = useState<string>();
-  const [type, setType] = useState<string>();
-  const [attribute, setAttribute] = useState<string>();
+export default function Filtro({ cards }: individualCardProps) {
+  const [atk, setAtk] = useState<attributeFillters>();
+  const [def, setDef] = useState<attributeFillters>();
+  const [level, setLevel] = useState<attributeFillters>();
+  const [link, setLink] = useState<attributeFillters>();
+  const [scale, setScale] = useState<attributeFillters>();
+  const [type, setType] = useState<attributeFillters>();
+  const [attribute, setAttribute] = useState<attributeFillters>();
   const [race, setRace] = useState<string>();
   const [archetype, setArchtype] = useState<string>();
-  const [data, setData] = useState();
+  const [data, setData] = useState(cards);
 
   //
   const formReset = () => {
@@ -28,9 +28,10 @@ export default function Filtro() {
     setAttribute(undefined);
     setRace(undefined);
     setArchtype(undefined);
+    setData(cards);
   };
   const filteredCards = async (fill: string) => {
-    const res = await allcardsOffset(0, 12, fill);
+    const res = await allcardsOffset(28, 0, fill);
     setData(res);
   };
   const filterObj: fillInputs = {
@@ -44,14 +45,15 @@ export default function Filtro() {
     attribute: attribute,
     archetype: archetype,
   };
+  const filter = fillstring(filterObj);
   return (
     <main>
       <form
         action="submit"
         onSubmit={(ev) => {
           ev.preventDefault();
-          filteredCards(fillstring(filterObj));
-          console.log(fillstring(filterObj));
+          setData(undefined);
+          filteredCards(filter);
         }}
       >
         <div className="type">
@@ -753,7 +755,7 @@ export default function Filtro() {
               type="number"
               id="levelLabel"
               name="levelLabel"
-              min={0}
+              min={1}
               max={12}
               step={1}
               placeholder="max 12"
@@ -801,7 +803,7 @@ export default function Filtro() {
       </form>
       <div>
         <CardList cards={data} />
-        <CarregarCards filter={fillstring(filterObj)} />
+        {data ? <CarregarCards inicialPage={28} filter={filter} /> : null}
       </div>
     </main>
   );

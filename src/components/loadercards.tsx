@@ -5,9 +5,9 @@ import { useInView } from "react-intersection-observer";
 import { Loader } from "./loader";
 import { CardList } from "./cardlist";
 
-export function CarregarCards({ filter }: any) {
+export function CarregarCards({ inicialPage, filter }: loadcards) {
   const [cards, setCards] = useState<individualCard[]>([]);
-  const [page, setPage] = useState(12);
+  const [page, setPage] = useState(inicialPage);
   const [ref, inView] = useInView();
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
@@ -16,11 +16,11 @@ export function CarregarCards({ filter }: any) {
     await delay(1300);
     const nextPage = page;
     if (filter) {
-      const newCards = (await allcardsOffset(nextPage, 12, filter)) ?? [];
+      const newCards = (await allcardsOffset(12, nextPage, filter)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + 12);
     } else {
-      const newCards = (await allcardsOffset(nextPage, 12)) ?? [];
+      const newCards = (await allcardsOffset(12, nextPage)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + 12);
     }

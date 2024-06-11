@@ -1,7 +1,7 @@
 "use server";
 export const allcardsOffset = async (
-  offset?: number,
   num?: number,
+  offset?: number,
   filter?: string
 ) => {
   if (filter) {
