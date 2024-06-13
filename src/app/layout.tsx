@@ -20,20 +20,18 @@ export default function RootLayout({
       <body className={inter.className}>
         <header>
           <nav>
-            <div>
-              <img src="" alt="" />
-            </div>
+            <img src="" alt="" />
             <div>
               <Link href={"/"}>Inicio</Link>
               <Link href={"/filtro"}>Filtro</Link>
             </div>
-            <div>
+            <div className="searchBarDiv">
               <CardSearch />
             </div>
           </nav>
         </header>
         {children}
-        <footer>
+        <footer className="footerLayout">
           <div>
             ///////////////////////////////////////////////////////////////////////////////////////////
           </div>

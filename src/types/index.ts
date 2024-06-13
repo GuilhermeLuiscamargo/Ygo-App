@@ -32,8 +32,6 @@ interface searchCards {
   img: string;
   id: number;
 }
-type attributeFillters = string | undefined;
-
 interface fillInputs {
   type?: string | undefined;
   atk?: string;
@@ -49,3 +47,4 @@ interface loadcards {
   inicialPage: number;
   filter?: string;
 }
+type attributeFillters = string | undefined;

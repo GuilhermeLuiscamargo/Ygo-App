@@ -14,7 +14,7 @@ export default async function AboutCard({ params }: props) {
   const atributteImg = getAtributteImg(card?.attribute);
   const raceImg = getType(card?.race);
   return (
-    <>
+    <main className="mainAboutCardTag">
       {card ? (
         <div key={card.id}>
           <img src={card.card_images[0].image_url_small} alt={card.name} />
@@ -80,6 +80,6 @@ export default async function AboutCard({ params }: props) {
       ) : (
         <img width="600px" src="/img/404.jpeg" alt="aconteceu um erro " />
       )}
-    </>
+    </main>
   );
 }

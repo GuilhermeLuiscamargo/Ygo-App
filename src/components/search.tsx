@@ -18,12 +18,12 @@ export default function CardSearch() {
           img: p.card_images[0].image_url_cropped,
         };
       })
-      .slice(0, 7);
+      .slice(0, 10);
     return resFill;
   }
   return (
-    <div>
+    <>
       <SearchList search={Search} />
-    </div>
+    </>
   );
 }

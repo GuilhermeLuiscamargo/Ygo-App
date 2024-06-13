@@ -33,7 +33,7 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   return (
     <>
       <CardList cards={cards} />
-      <div ref={ref}>
+      <div className="LoaderSpinGif" ref={ref}>
         <Loader />
       </div>
     </>

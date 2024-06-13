@@ -21,11 +21,12 @@ function SearchList({
     setCardNames(await search(searchString));
   };
   return (
-    <div>
-      <div>
+    <>
+      <div className="searchBar">
         <form action={`/card/${searchString}`}>
           <input
             type="text"
+            required
             value={searchString}
             onChange={(e) => {
               setSearchString(e.target.value);
@@ -37,13 +38,14 @@ function SearchList({
           </button>
         </form>
       </div>
-      {cardNames.length
-        ? cardNames.map((card) => {
-            const attributeImg = getAtributteImg(card.attribute);
-            const raceImg = getType(card.race);
-            return (
-              <div key={`search=${card.id}`}>
+      <div className="resultsOfSearchBar">
+        {cardNames.length
+          ? cardNames.map((card) => {
+              const attributeImg = getAtributteImg(card.attribute);
+              const raceImg = getType(card.race);
+              return (
                 <Link
+                  key={`search=${card.id}`}
                   href={`/card/${card.name}`}
                   onClick={() => setSearchString("")}
                 >
@@ -54,11 +56,11 @@ function SearchList({
                     <img width="20px" src={raceImg} alt={card.race} />
                   </div>
                 </Link>
-              </div>
-            );
-          })
-        : null}
-    </div>
+              );
+            })
+          : null}
+      </div>
+    </>
   );
 }
 
