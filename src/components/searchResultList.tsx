@@ -14,6 +14,7 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
               href={`/card/${card.name}`}
               key={`search=${card.id}`}
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
+              title={card.name}
             >
               <img
                 src={card.img}

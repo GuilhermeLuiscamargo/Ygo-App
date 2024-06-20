@@ -2,6 +2,8 @@ import { Cardsbyname } from "@/actions/cardsbyname";
 import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
 import { LuSwords, LuShield } from "react-icons/lu";
+import ParallaxImg from "./paralaxImg";
+
 interface props {
   params: {
     cardId: string;
@@ -18,7 +20,10 @@ export default async function AboutCard({ params }: props) {
     <main className="mainAboutCardTag">
       {card ? (
         <div key={card.id}>
-          <img src={card.card_images[0].image_url_small} alt={card.name} />
+          <ParallaxImg
+            img={card.card_images[0].image_url_small}
+            name={card.name}
+          />
           <p>{card.name}</p>
           <p>Type: {card.type}</p>
           <p>

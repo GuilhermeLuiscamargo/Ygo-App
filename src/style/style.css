@@ -1,15 +1,26 @@
+/*mudança de estilo bootstrap*/
+.form-control:focus {
+  border-color: #ffc209;
+  box-shadow: 0 0 0 0.2rem rgba(251, 255, 0, 0.192);
+}
+.form-control {
+  border: 1px solid #212529;
+}
+/*estilos globais*/
 * {
   list-style: none;
 }
-
 body,
 header {
   min-width: 100%;
-  min-height: auto;
   background-color: #191919;
 }
 a {
   text-decoration: none;
+}
+.mainContainer {
+  padding: 0;
+  height: 100vh;
 }
 /* estilo do header*/
 .searchResultList {
@@ -39,6 +50,11 @@ a {
   border: 0.1rem solid #ffca2c;
   border-radius: 1rem;
 }
+.cardOfCardList {
+  border-radius: 0px;
+  background: #363636;
+  box-shadow: 8px 8px 16px #2d2d2d, -8px -8px 16px #3f3f3f;
+}
 .cardOfCardList img {
   max-width: 150px;
   border: 0.3rem solid transparent;
@@ -46,5 +62,35 @@ a {
 }
 .cardOfCardList img:hover {
   filter: brightness(110%) saturate(130%) contrast(120%);
-  border: 0.3rem solid #ffca2c;
+  border: 0.3rem solid #ffca2c9c;
+}
+/*estilo pagina filtro*/
+.CardResultsFilterTag {
+  max-height: 1000px;
+  background-color: #363636;
+  border: 0.1rem solid #ffca2c;
+  border-radius: 1rem;
+}
+.formDivFilterTag {
+  background-color: #3f3e3e;
+  border: 0.2rem solid #797777;
+  border-radius: 1rem;
+}
+.valuesDivSelect input::placeholder {
+  color: #ffc107;
+}
+/*estilo footer*/
+.Contato,
+.Tecnologias {
+  padding-left: 0.3rem;
+  border-left: 2px solid #e2ae10;
+}
+.Contato a,
+.Tecnologias a {
+  color: #cc9b09;
+  transition: 0.3s;
+}
+.Contato a:hover,
+.Tecnologias a:hover {
+  color: #000000;
 }
