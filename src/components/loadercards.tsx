@@ -15,14 +15,15 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   const loadMoreCards = async () => {
     await delay(1300);
     const nextPage = page;
+    const QtdCards = 24;
     if (filter) {
-      const newCards = (await allcardsOffset(12, nextPage, filter)) ?? [];
+      const newCards = (await allcardsOffset(QtdCards, nextPage, filter)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
-      setPage(nextPage + 12);
+      setPage(nextPage + QtdCards);
     } else {
-      const newCards = (await allcardsOffset(12, nextPage)) ?? [];
+      const newCards = (await allcardsOffset(QtdCards, nextPage)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
-      setPage(nextPage + 12);
+      setPage(nextPage + QtdCards);
     }
   };
   useEffect(() => {
@@ -33,7 +34,7 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   return (
     <>
       <CardList cards={cards} />
-      <div className="LoaderSpinGif" ref={ref}>
+      <div className=" text-center w-100 " ref={ref}>
         <Loader />
       </div>
     </>

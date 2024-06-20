@@ -1,5 +1,5 @@
-//import { IoSearch } from "react-icons/io5";
 import SearchList from "./searchlist";
+
 export default function CardSearch() {
   async function Search(search: string) {
     "use server";
@@ -7,6 +7,7 @@ export default function CardSearch() {
       "https://db.ygoprodeck.com/api/v7/cardinfo.php"
     );
     const res: { data: individualCard[] } = await cardRes.json();
+
     let resFill = res.data
       .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
       .map((p) => {

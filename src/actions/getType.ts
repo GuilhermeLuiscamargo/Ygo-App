@@ -44,7 +44,7 @@ export function getType(race: string | undefined) {
       return "/img/tipos/Ritual.webp";
     case "Rock":
       return "/img/tipos/Rock.webp";
-    case "Sea-Serpent":
+    case "Sea Serpent":
       return "/img/tipos/Sea-Serpent.webp";
     case "Spellcaster":
       return "/img/tipos/Spellcaster.webp";

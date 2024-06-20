@@ -1,0 +1,50 @@
+* {
+  list-style: none;
+}
+
+body,
+header {
+  min-width: 100%;
+  min-height: auto;
+  background-color: #191919;
+}
+a {
+  text-decoration: none;
+}
+/* estilo do header*/
+.searchResultList {
+  max-height: 300px;
+  background-color: #363636e8;
+  position: absolute;
+  z-index: 999;
+}
+.itemResultList {
+  max-width: 100%;
+  transition: all 0.7s;
+}
+.itemResultList:hover {
+  background-color: #4d4c4c;
+}
+.itemResultListImg {
+  width: 70px;
+}
+.itemResultListImgDiv {
+  width: 30px;
+}
+/*estilo da pagina inicial*/
+
+.allCardsInicio {
+  max-height: 1000px;
+  background-color: #363636;
+  border: 0.1rem solid #ffca2c;
+  border-radius: 1rem;
+}
+.cardOfCardList img {
+  max-width: 150px;
+  border: 0.3rem solid transparent;
+  transition: 0.4s;
+}
+.cardOfCardList img:hover {
+  filter: brightness(110%) saturate(130%) contrast(120%);
+  border: 0.3rem solid #ffca2c;
+}

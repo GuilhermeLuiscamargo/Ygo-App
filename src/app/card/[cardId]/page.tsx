@@ -13,6 +13,7 @@ export default async function AboutCard({ params }: props) {
   const card = await Cardsbyname(cardUrlName);
   const atributteImg = getAtributteImg(card?.attribute);
   const raceImg = getType(card?.race);
+
   return (
     <main className="mainAboutCardTag">
       {card ? (

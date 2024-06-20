@@ -1,9 +1,7 @@
 "use client";
-import { getAtributteImg } from "@/actions/getAtributte";
-import { getType } from "@/actions/getType";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { IoSearch } from "react-icons/io5";
+import SearchResultList from "./searchResultList";
 
 function SearchList({
   search,
@@ -16,51 +14,36 @@ function SearchList({
   useEffect(() => {
     search("").then((names) => setCardNames(names));
   }, [search]);
-
   const onChange = async () => {
     setCardNames(await search(searchString));
   };
+
   return (
-    <>
-      <div className="searchBar">
-        <form action={`/card/${searchString}`}>
-          <input
-            type="text"
-            required
-            value={searchString}
-            onChange={(e) => {
-              setSearchString(e.target.value);
-              onChange();
-            }}
-          />
-          <button>
-            <IoSearch />
-          </button>
-        </form>
-      </div>
-      <div className="resultsOfSearchBar">
-        {cardNames.length
-          ? cardNames.map((card) => {
-              const attributeImg = getAtributteImg(card.attribute);
-              const raceImg = getType(card.race);
-              return (
-                <Link
-                  key={`search=${card.id}`}
-                  href={`/card/${card.name}`}
-                  onClick={() => setSearchString("")}
-                >
-                  <div>
-                    <img width="50px" src={card.img} alt="" />
-                    {card.name}
-                    <img width="20px" src={attributeImg} alt={card.attribute} />
-                    <img width="20px" src={raceImg} alt={card.race} />
-                  </div>
-                </Link>
-              );
-            })
-          : null}
-      </div>
-    </>
+    <div className="searchBarDiv w-25 me-2 ">
+      <form className=" d-flex input-group">
+        <input
+          className=" form-control"
+          type="text"
+          placeholder="Search Card"
+          value={searchString}
+          required
+          onChange={(e) => {
+            setSearchString(e.target.value);
+            onChange();
+          }}
+        />
+        <button
+          className=" btn btn-warning"
+          type="submit"
+          formAction={`/card/${searchString}`}
+          onSubmit={(ev) => ev.preventDefault()}
+        >
+          <IoSearch />
+        </button>
+      </form>
+
+      {searchString === "" ? null : <SearchResultList cardNames={cardNames} />}
+    </div>
   );
 }
 

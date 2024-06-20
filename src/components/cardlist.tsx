@@ -6,18 +6,20 @@ export function CardList({ cards }: individualCardProps) {
       {cards ? (
         cards.map((card) => {
           return (
-            <Link key={card.id} href={`/card/${card.name}`}>
+            <Link
+              href={`/card/${card.name}`}
+              key={card.id}
+              className="cardOfCardList"
+            >
               {card.card_images[0].image_url ? (
                 <img
-                  key={card.id}
-                  width="200px"
+                  className="cardOfCardListImg img-fluid"
                   src={card.card_images[0].image_url}
                   alt={card.name}
                 />
               ) : (
                 <img
-                  key={card.id}
-                  width="200px"
+                  className="ardOfCardListImg img-fluid"
                   src="img/LoadingCard.jpg"
                   alt={card.name}
                 />

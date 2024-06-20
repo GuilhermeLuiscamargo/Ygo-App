@@ -32,6 +32,9 @@ interface searchCards {
   img: string;
   id: number;
 }
+interface searchCardsProps {
+  cardNames: searchCards[] | undefined;
+}
 interface fillInputs {
   type?: string | undefined;
   atk?: string;
