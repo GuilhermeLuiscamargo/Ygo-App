@@ -11,7 +11,7 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
           const raceImg = getType(card.race);
           return (
             <Link
-              href={`/card/${card.name}`}
+              href={`/card/${card.id}`}
               key={`search=${card.id}`}
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}

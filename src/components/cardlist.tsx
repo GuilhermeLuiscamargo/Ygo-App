@@ -7,7 +7,7 @@ export function CardList({ cards }: individualCardProps) {
         ? cards.map((card) => {
             return (
               <Link
-                href={`/card/${card.name}`}
+                href={`/card/${card.id}`}
                 key={card.id}
                 className="cardOfCardList"
                 title={card.name}

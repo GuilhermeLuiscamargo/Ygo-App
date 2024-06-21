@@ -62,7 +62,6 @@ a {
 }
 .cardOfCardList img:hover {
   filter: brightness(110%) saturate(130%) contrast(120%);
-  border: 0.3rem solid #ffca2c9c;
 }
 /*estilo pagina filtro*/
 .CardResultsFilterTag {
@@ -93,4 +92,17 @@ a {
 .Contato a:hover,
 .Tecnologias a:hover {
   color: #000000;
+}
+/*estilo carta individual*/
+.tableInfo li {
+  background-color: #3a3a3a;
+  border: 1px solid rgb(78, 77, 77);
+  border-radius: 1rem;
+  padding: 0.1rem;
+}
+.tableInfo li p {
+  font-size: 0.9rem;
+}
+.tableInfo li p img {
+  width: 0.9rem;
 }
