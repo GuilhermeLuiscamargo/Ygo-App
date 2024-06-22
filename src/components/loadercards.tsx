@@ -13,7 +13,7 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
     new Promise((resolve) => setTimeout(resolve, ms));
   //
   const loadMoreCards = async () => {
-    await delay(1300);
+    await delay(250);
     const nextPage = page;
     const QtdCards = 24;
     if (filter) {

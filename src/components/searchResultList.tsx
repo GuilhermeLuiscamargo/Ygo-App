@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function SearchResultList({ cardNames }: searchCardsProps) {
   return (
-    <div className="searchResultList overflow-auto w-25 mt-1 pt-2 d-flex flex-column gap-2 ">
+    <>
       {cardNames?.length ? (
         cardNames.map((card) => {
           const attributeImg = getAtributteImg(card.attribute);
@@ -13,6 +13,7 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
             <Link
               href={`/card/${card.id}`}
               key={`search=${card.id}`}
+              type="submit"
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}
             >
@@ -43,6 +44,6 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
       ) : (
         <p className=" text-center text-warning">Card não encontrado!!!</p>
       )}
-    </div>
+    </>
   );
 }

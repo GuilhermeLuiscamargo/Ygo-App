@@ -6,19 +6,19 @@ import { CarregarCards } from "@/components/loadercards";
 import { useState } from "react";
 
 export default function Filtro({ cards }: individualCardProps) {
-  const [atk, setAtk] = useState<attributeFillters>();
-  const [def, setDef] = useState<attributeFillters>();
-  const [level, setLevel] = useState<attributeFillters>();
-  const [link, setLink] = useState<attributeFillters>();
-  const [scale, setScale] = useState<attributeFillters>();
-  const [type, setType] = useState<attributeFillters>();
-  const [attribute, setAttribute] = useState<attributeFillters>();
-  const [race, setRace] = useState<attributeFillters>();
-  const [archetype, setArchtype] = useState<attributeFillters>();
+  const [atk, setAtk] = useState<attributeFillters>("");
+  const [def, setDef] = useState<attributeFillters>("");
+  const [level, setLevel] = useState<attributeFillters>("");
+  const [link, setLink] = useState<attributeFillters>("");
+  const [scale, setScale] = useState<attributeFillters>("");
+  const [type, setType] = useState<attributeFillters>("");
+  const [attribute, setAttribute] = useState<attributeFillters>("");
+  const [race, setRace] = useState<attributeFillters>("");
+  const [archetype, setArchtype] = useState<attributeFillters>("");
   const [data, setData] = useState(cards);
-  const [filter, setFilter] = useState<attributeFillters>();
+  const [filter, setFilter] = useState<attributeFillters>("");
 
-  const resetData = () => setData(cards);
+  const resetData = async () => setData(cards);
   const Reset = () => {
     setAtk("");
     setDef("");
@@ -35,7 +35,7 @@ export default function Filtro({ cards }: individualCardProps) {
   };
 
   const filteredCards = async (fill: attributeFillters) => {
-    const res = await allcardsOffset(28, 0, fill);
+    const res = await allcardsOffset(24, 0, fill);
     setData(res);
   };
   const filterObj: fillInputs = {
@@ -51,7 +51,7 @@ export default function Filtro({ cards }: individualCardProps) {
   };
   const filterString = fillstring(filterObj);
   return (
-    <main className="mainFiltroTag container-fluid d-flex flex-column align-items-center pt-4 pb-4 gap-5 ">
+    <main className="mainFiltroTag container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5 ">
       <div className="formDivFilterTag  w-75 sticky">
         <form
           action="submit"
@@ -824,13 +824,15 @@ export default function Filtro({ cards }: individualCardProps) {
           </div>
         </form>
       </div>
-      <div className="CardResultsFilterTag w-75 overflow-auto d-flex flex-wrap justify-content-center p-2 gap-3 ">
-        <CardList cards={data} />
+      <div className="CardResultsFilterDiv w-75 overflow-auto p-2 text-center">
         {data ? (
-          <>
-            <CarregarCards inicialPage={28} filter={filter} />
-          </>
-        ) : null}
+          <div className="container-fluid d-flex flex-wrap gap-3">
+            <CardList cards={data} />
+            <CarregarCards inicialPage={24} filter={filter} />
+          </div>
+        ) : (
+          <p className=" text-warning h3">A carta em questão não existe!!!</p>
+        )}
       </div>
     </main>
   );

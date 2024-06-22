@@ -8,7 +8,6 @@ export const CardsbyId = async (name: string | number) => {
       const { data } = await res.json();
       return data[0] as individualCard;
     } catch (error) {
-      //console.error("erro no fetch data", error);
       return null;
     }
   } else {
@@ -19,7 +18,6 @@ export const CardsbyId = async (name: string | number) => {
       const { data } = await res.json();
       return data[0] as individualCard;
     } catch (error) {
-      //console.error("erro no fetch data", error);
       return null;
     }
   }

@@ -64,7 +64,7 @@ a {
   filter: brightness(110%) saturate(130%) contrast(120%);
 }
 /*estilo pagina filtro*/
-.CardResultsFilterTag {
+.CardResultsFilterDiv {
   max-height: 1000px;
   background-color: #363636;
   border: 0.1rem solid #ffca2c;
@@ -102,7 +102,14 @@ a {
 }
 .tableInfo li p {
   font-size: 0.9rem;
+  padding: 0.3rem;
 }
 .tableInfo li p img {
   width: 0.9rem;
+}
+.parallaxImg {
+  width: 250px;
+}
+.parallaxImgError {
+  width: 400px;
 }

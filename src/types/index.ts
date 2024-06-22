@@ -51,4 +51,4 @@ interface loadcards {
   filter?: string;
 }
 type attributeFillters = string | undefined;
-type imgParalax = { img: string; name: string };
+type imgParalax = { img?: string; name?: string };

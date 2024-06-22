@@ -28,7 +28,7 @@ export default async function AboutCard({ params }: props) {
           />
           <div className="cardInfoDiv container text-warning">
             <h1>{card.name}</h1>
-            <ul className="tableInfo w-75 d-flex flex-wrap align-items-center row-gap-3 column-gap-3 p-2">
+            <ul className="tableInfo w-75 d-flex flex-wrap align-items-center row-gap-3 column-gap-3">
               <li className="w-25">
                 <span>Type</span>
                 <p>{card.type}</p>
@@ -142,7 +142,9 @@ export default async function AboutCard({ params }: props) {
           </div>
         </div>
       ) : (
-        <img width="600px" src="/img/404.jpeg" alt="aconteceu um erro " />
+        <div className="d-flex align-items-center justify-content-center container ">
+          <ParallaxImg />
+        </div>
       )}
     </main>
   );

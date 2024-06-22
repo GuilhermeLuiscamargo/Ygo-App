@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NULL } from "sass";
 
 export function CardList({ cards }: individualCardProps) {
   return (

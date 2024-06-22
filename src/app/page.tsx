@@ -9,8 +9,16 @@ const Home = async () => {
     <>
       <main className="inicioMainTag container-fluid d-flex justify-content-center pt-4 pb-4">
         <div className="allCardsInicio w-75 overflow-auto d-flex flex-wrap justify-content-center p-2 gap-3 ">
-          <CardList cards={data} />
-          <CarregarCards inicialPage={24} />
+          {data ? (
+            <>
+              <CardList cards={data} />
+              <CarregarCards inicialPage={24} />
+            </>
+          ) : (
+            <p className=" text-warning h3">
+              Aconteceu um erro inesperado recarregue a pagina
+            </p>
+          )}
         </div>
       </main>
     </>

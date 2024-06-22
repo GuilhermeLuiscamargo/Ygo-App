@@ -10,20 +10,19 @@ function SearchList({
 }) {
   const [cardNames, setCardNames] = useState<searchCards[]>([]);
   const [searchString, setSearchString] = useState("");
-
-  useEffect(() => {
-    search("").then((names) => setCardNames(names));
-  }, [search]);
   const onChange = async () => {
     setCardNames(await search(searchString));
   };
 
+  useEffect(() => {
+    search("").then((names) => setCardNames(names));
+  }, [search]);
   return (
-    <div className="searchBarDiv w-25 me-2 ">
+    <div className="searchBarDiv w-25 me-2 " onBlur={() => setSearchString("")}>
       <form className=" d-flex input-group">
         <input
           className=" form-control"
-          type="text"
+          type="search"
           placeholder="Search Card"
           value={searchString}
           required
@@ -41,8 +40,14 @@ function SearchList({
           <IoSearch />
         </button>
       </form>
-
-      {searchString === "" ? null : <SearchResultList cardNames={cardNames} />}
+      {searchString === "" ? null : (
+        <div
+          className="searchResultList overflow-auto w-25 mt-1 d-flex flex-column gap-2 "
+          onClick={() => setSearchString("")}
+        >
+          <SearchResultList cardNames={cardNames} />
+        </div>
+      )}
     </div>
   );
 }
