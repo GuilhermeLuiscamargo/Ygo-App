@@ -9,9 +9,10 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   const [cards, setCards] = useState<individualCard[]>([]);
   const [page, setPage] = useState(inicialPage);
   const [ref, inView] = useInView();
+  const [loader, setLoader] = useState<boolean>(true);
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
-  //
+
   const loadMoreCards = async () => {
     await delay(250);
     const nextPage = page;
@@ -20,10 +21,12 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
       const newCards = (await allcardsOffset(QtdCards, nextPage, filter)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
+      !newCards.length ? setLoader(!loader) : null;
     } else {
       const newCards = (await allcardsOffset(QtdCards, nextPage)) ?? [];
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
+      !newCards.length ? setLoader(!loader) : null;
     }
   };
   useEffect(() => {
@@ -34,9 +37,11 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   return (
     <>
       <CardList cards={cards} />
-      <div className=" text-center w-100 " ref={ref}>
-        <Loader />
-      </div>
+      {loader ? (
+        <div className=" text-center w-100 " ref={ref}>
+          <Loader />
+        </div>
+      ) : null}
     </>
   );
 }

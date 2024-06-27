@@ -1,5 +1,7 @@
+import loadingImg from "../../public/img/LoadingCard.jpg";
+import Image from "next/image";
+
 import Link from "next/link";
-import { NULL } from "sass";
 
 export function CardList({ cards }: individualCardProps) {
   return (
@@ -14,15 +16,19 @@ export function CardList({ cards }: individualCardProps) {
                 title={card.name}
               >
                 {card.card_images[0].image_url ? (
-                  <img
+                  <Image
                     className="cardOfCardListImg img-fluid"
                     src={card.card_images[0].image_url}
                     alt={card.name}
+                    placeholder="blur"
+                    blurDataURL={card.card_images[0].image_url}
+                    width={150}
+                    height={214}
                   />
                 ) : (
-                  <img
-                    className="ardOfCardListImg img-fluid placeholder"
-                    src="img/LoadingCard.jpg"
+                  <Image
+                    className="loadingCardOfCardList img-fluid placeholder"
+                    src={loadingImg}
                     alt={card.name}
                   />
                 )}

@@ -1,3 +1,8 @@
+import Image from "next/image";
+import rank from "../../../../public/img/marcadores/rank.webp";
+import level from "../../../../public/img/marcadores/level.svg";
+import scale from "../../../../public/img/marcadores/scale.webp";
+import linkMark from "../../../../public/img/marcadores/LinkMark.png";
 import { CardsbyId } from "@/actions/cardsId";
 import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
@@ -26,9 +31,9 @@ export default async function AboutCard({ params }: props) {
             img={card.card_images[0].image_url_small}
             name={card.name}
           />
-          <div className="cardInfoDiv container text-warning">
+          <div className="cardInfoDiv container text-warning ">
             <h1>{card.name}</h1>
-            <ul className="tableInfo w-75 d-flex flex-wrap align-items-center row-gap-3 column-gap-3">
+            <ul className="tableInfo w-75 d-flex flex-wrap  row-gap-3 column-gap-3">
               <li className="w-25">
                 <span>Type</span>
                 <p>{card.type}</p>
@@ -36,7 +41,7 @@ export default async function AboutCard({ params }: props) {
               <li className="w-25">
                 <span>Typing</span>
                 <p>
-                  <img width="20px" src={raceImg} alt={card.race}></img>{" "}
+                  <Image src={raceImg} alt={card.race} className="iconCard" />{" "}
                   {card.race}
                 </p>
               </li>
@@ -51,7 +56,11 @@ export default async function AboutCard({ params }: props) {
                 <li className="w-25">
                   <span>Attribute</span>
                   <p>
-                    <img width="20px" src={atributteImg} alt={card.attribute} />
+                    <Image
+                      src={atributteImg}
+                      alt={card.attribute}
+                      className="iconCard"
+                    />{" "}
                     {card.attribute}
                   </p>
                 </li>
@@ -61,15 +70,15 @@ export default async function AboutCard({ params }: props) {
                 <li className="w-25">
                   <span>Rank</span>
                   <p>
-                    <img width="20px" src="/img/rank.webp" alt="rank" />
+                    <Image src={rank} alt="rank" className="iconCard" />{" "}
                     {card.level}
                   </p>
                 </li>
               ) : card.level ? (
-                <li className="w-25">
+                <li className="w-25 ">
                   <span>Level</span>
-                  <p className="w-25">
-                    <img width="20px" src="/img/level.svg" alt="level" />
+                  <p>
+                    <Image src={level} alt="Level" className="iconCard" />{" "}
                     {card.level}
                   </p>
                 </li>
@@ -77,7 +86,7 @@ export default async function AboutCard({ params }: props) {
                 <li className="w-25">
                   <span>LinkVal</span>
                   <p>
-                    <img width="20px" src="/img/LinkMark.png" alt="LinkVal" />
+                    <Image src={linkMark} alt="linkVal" className="iconCard" />{" "}
                     {card.linkval}
                   </p>
                 </li>
@@ -87,11 +96,7 @@ export default async function AboutCard({ params }: props) {
                 <li className="w-25">
                   <span>Escala Pêndulo</span>
                   <p>
-                    <img
-                      width="20px"
-                      src="/img/scale.webp"
-                      alt="Escala Pêndulo"
-                    />
+                    <Image src={scale} alt="Escala" className="iconCard" />{" "}
                     {card.scale}
                   </p>
                 </li>
@@ -101,8 +106,7 @@ export default async function AboutCard({ params }: props) {
                   <li className="w-25">
                     <span>ATK</span>
                     <p>
-                      <LuSwords />
-                      {card.atk}
+                      <LuSwords /> {card.atk}
                     </p>
                   </li>
                   <li className="w-25">
@@ -133,7 +137,7 @@ export default async function AboutCard({ params }: props) {
               ) : (
                 <div>
                   <p>
-                    [Descrição]
+                    [Descrição/Efeito Monstro]
                     <br /> {card.desc}
                   </p>
                 </div>

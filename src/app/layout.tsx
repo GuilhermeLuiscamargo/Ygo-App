@@ -1,5 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/style.css";
+import logo from "../../public/img/exodiaLogo.jpg";
+import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import CardSearch from "@/components/search";
@@ -28,13 +30,8 @@ export default function RootLayout({
       <body>
         <div className="mainContainer container-fluid d-flex flex-column justify-content-between">
           <header className="sticky-top">
-            <nav className="navbar align-items-center">
-              <img
-                className="img-fluid"
-                src="img/exodiaLogo.jpg"
-                alt="Logo"
-                width="90px"
-              />
+            <nav className="navbar p-0">
+              <Image src={logo} alt="logo" className="img-fluid" />
               <div className="d-flex gap-5 h5">
                 <Link href={"/"} className="link-warning">
                   Inicio

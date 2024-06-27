@@ -1,68 +1,100 @@
+import aqua from "../../public/img/tipos/Aqua.webp";
+import beastWarrior from "../../public/img/tipos/Beast-Warrior.webp";
+import beast from "../../public/img/tipos/Beast.webp";
+import continuous from "../../public/img/tipos/Continuous.webp";
+import counter from "../../public/img/tipos/Counter.webp";
+import creatorGod from "../../public/img/tipos/Creator-God.webp";
+import cyberse from "../../public/img/tipos/Cyberse.webp";
+import dinosaur from "../../public/img/tipos/Dinosaur.webp";
+import divineBeast from "../../public/img/tipos/Divine-Beast.webp";
+import dragon from "../../public/img/tipos/Dragon.webp";
+import equip from "../../public/img/tipos/Equip.webp";
+import fairy from "../../public/img/tipos/Fairy.webp";
+import field from "../../public/img/tipos/Field.webp";
+import fiend from "../../public/img/tipos/Fiend.webp";
+import fish from "../../public/img/tipos/Fish.webp";
+import insect from "../../public/img/tipos/Insect.webp";
+import machine from "../../public/img/tipos/Machine.webp";
+import normal from "../../public/img/tipos/Normal.svg";
+import plant from "../../public/img/tipos/Plant.webp";
+import psychic from "../../public/img/tipos/Psychic.webp";
+import pyro from "../../public/img/tipos/Pyro.webp";
+import quickPlay from "../../public/img/tipos/Quick-Play.webp";
+import reptile from "../../public/img/tipos/Reptile.webp";
+import ritual from "../../public/img/tipos/Ritual.webp";
+import rock from "../../public/img/tipos/Rock.webp";
+import seaSerpent from "../../public/img/tipos/Sea-Serpent.webp";
+import spellCaster from "../../public/img/tipos/Spellcaster.webp";
+import thunder from "../../public/img/tipos/Thunder.webp";
+import warrior from "../../public/img/tipos/Warrior.webp";
+import wingedBeast from "../../public/img/tipos/Winged-Beast.webp";
+import wyrm from "../../public/img/tipos/Wyrm.webp";
+import zombie from "../../public/img/tipos/Zombie.webp";
 export function getType(race: string | undefined) {
   switch (race) {
     case "Aqua":
-      return "/img/tipos/Aqua.webp";
+      return aqua;
     case "Beast-Warrior":
-      return "/img/tipos/Beast-Warrior.webp";
+      return beastWarrior;
     case "Beast":
-      return "/img/tipos/Beast.webp";
+      return beast;
     case "Continuous":
-      return "/img/tipos/Continuous.webp";
+      return continuous;
     case "Counter":
-      return "/img/tipos/Counter.webp";
+      return counter;
     case "Creator-God":
-      return "/img/tipos/Creator-God.webp";
+      return creatorGod;
     case "Cyberse":
-      return "/img/tipos/Cyberse.webp";
+      return cyberse;
     case "Dinosaur":
-      return "/img/tipos/Dinosaur.webp";
+      return dinosaur;
     case "Divine-Beast":
-      return "/img/tipos/Divine-Beast.webp";
+      return divineBeast;
     case "Dragon":
-      return "/img/tipos/Dragon.webp";
+      return dragon;
     case "Equip":
-      return "/img/tipos/Equip.webp";
+      return equip;
     case "Fairy":
-      return "/img/tipos/Fairy.webp";
+      return fairy;
     case "Field":
-      return "/img/tipos/Field.webp";
+      return field;
     case "Fish":
-      return "/img/tipos/Fish.webp";
+      return fish;
     case "Insect":
-      return "/img/tipos/Insect.webp";
+      return insect;
     case "Machine":
-      return "/img/tipos/Machine.webp";
+      return machine;
     case "Plant":
-      return "/img/tipos/Plant.webp";
+      return plant;
     case "Pyro":
-      return "/img/tipos/Pyro.webp";
+      return pyro;
     case "Quick-Play":
-      return "/img/tipos/Quick-Play.webp";
+      return quickPlay;
     case "Reptile":
-      return "/img/tipos/Reptile.webp";
+      return reptile;
     case "Ritual":
-      return "/img/tipos/Ritual.webp";
+      return ritual;
     case "Rock":
-      return "/img/tipos/Rock.webp";
+      return rock;
     case "Sea Serpent":
-      return "/img/tipos/Sea-Serpent.webp";
+      return seaSerpent;
     case "Spellcaster":
-      return "/img/tipos/Spellcaster.webp";
+      return spellCaster;
     case "Thunder":
-      return "/img/tipos/Thunder.webp";
+      return thunder;
     case "Warrior":
-      return "/img/tipos/Warrior.webp";
+      return warrior;
     case "Winged-Beast":
-      return "/img/tipos/Winged-Beast.webp";
+      return wingedBeast;
     case "Wyrm":
-      return "/img/tipos/Wyrm.webp";
+      return wyrm;
     case "Zombie":
-      return "/img/tipos/Zombie.webp";
+      return zombie;
     case "Psychic":
-      return "/img/tipos/Psychic.webp";
+      return psychic;
     case "Normal":
-      return "/img/tipos/Normal.svg";
+      return normal;
     case "Fiend":
-      return "/img/tipos/Fiend.webp";
+      return fiend;
   }
 }

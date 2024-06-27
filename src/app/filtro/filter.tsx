@@ -33,11 +33,11 @@ export default function Filtro({ cards }: individualCardProps) {
     setData(undefined);
     setTimeout(resetData, 1);
   };
-
   const filteredCards = async (fill: attributeFillters) => {
     const res = await allcardsOffset(24, 0, fill);
     setData(res);
   };
+
   const filterObj: fillInputs = {
     type: type,
     atk: atk,
@@ -52,7 +52,7 @@ export default function Filtro({ cards }: individualCardProps) {
   const filterString = fillstring(filterObj);
   return (
     <main className="mainFiltroTag container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5 ">
-      <div className="formDivFilterTag  w-75 sticky">
+      <div className="formDivFilterTag  w-75">
         <form
           action="submit"
           className="w-100 text-warning d-flex flex-column gap-3 p-3 "
@@ -70,7 +70,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-type"
                 onChange={(ev) =>
                   ev.target.value === "Select Type"
-                    ? null
+                    ? setType(undefined)
                     : setType(ev.target.value)
                 }
               >
@@ -84,7 +84,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 <option>Normal Tuner Monster</option>
                 <option>Pendulum Effect Fusion Monster</option>
                 <option>Pendulum Effect Monster</option>
-                <option>Pendulum Effect Ritual Monster</option>
+
                 <option>Pendulum Flip Effect Monster</option>
                 <option>Pendulum Normal Monster</option>
                 <option>Pendulum Tuner Effect Monster</option>
@@ -111,7 +111,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-attribute"
                 onChange={(ev) =>
                   ev.target.value === "Select Attribute"
-                    ? null
+                    ? setAttribute(undefined)
                     : setAttribute(ev.target.value)
                 }
               >
@@ -131,7 +131,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-race"
                 onChange={(ev) =>
                   ev.target.value === "Select Race"
-                    ? null
+                    ? setRace(undefined)
                     : setRace(ev.target.value)
                 }
               >
@@ -177,7 +177,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-archetype"
                 onChange={(ev) =>
                   ev.target.value === "Select Archetype"
-                    ? null
+                    ? setArchtype(undefined)
                     : setArchtype(ev.target.value)
                 }
               >
@@ -831,7 +831,9 @@ export default function Filtro({ cards }: individualCardProps) {
             <CarregarCards inicialPage={24} filter={filter} />
           </div>
         ) : (
-          <p className=" text-warning h3">A carta em questão não existe!!!</p>
+          <p className=" text-warning h3">
+            As cartas em questão não existem!!!
+          </p>
         )}
       </div>
     </main>

@@ -13,12 +13,20 @@ function SearchList({
   const onChange = async () => {
     setCardNames(await search(searchString));
   };
+  const delay = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(() => {
     search("").then((names) => setCardNames(names));
   }, [search]);
   return (
-    <div className="searchBarDiv w-25 me-2 " onBlur={() => setSearchString("")}>
+    <div
+      className="searchBarDiv w-25 me-2 "
+      onBlur={async () => {
+        await delay(250);
+        setSearchString("");
+      }}
+    >
       <form className=" d-flex input-group">
         <input
           className=" form-control"

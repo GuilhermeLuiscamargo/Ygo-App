@@ -9,6 +9,9 @@
 /*estilos globais*/
 * {
   list-style: none;
+
+  scrollbar-width: auto;
+  scrollbar-color: #ffc826 #333333b9;
 }
 body,
 header {
@@ -23,6 +26,13 @@ a {
   height: 100vh;
 }
 /* estilo do header*/
+header,
+nav {
+  height: 90px;
+}
+nav img {
+  width: 90px;
+}
 .searchResultList {
   max-height: 300px;
   background-color: #363636e8;
@@ -37,7 +47,7 @@ a {
   background-color: #4d4c4c;
 }
 .itemResultListImg {
-  width: 70px;
+  width: 5rem;
 }
 .itemResultListImgDiv {
   width: 30px;
@@ -47,28 +57,47 @@ a {
 .allCardsInicio {
   max-height: 1000px;
   background-color: #363636;
-  border: 0.1rem solid #ffca2c;
-  border-radius: 1rem;
+  border: 0.2rem solid #ffca2c;
+  border-radius: 0.3rem;
 }
 .cardOfCardList {
-  border-radius: 0px;
   background: #363636;
   box-shadow: 8px 8px 16px #2d2d2d, -8px -8px 16px #3f3f3f;
-}
-.cardOfCardList img {
   max-width: 150px;
   border: 0.3rem solid transparent;
-  transition: 0.4s;
+  filter: brightness(120%) saturate(110%) contrast(110%);
 }
-.cardOfCardList img:hover {
-  filter: brightness(110%) saturate(130%) contrast(120%);
+
+.cardOfCardListImg:hover {
+  border: 0.3rem solid transparent;
+  filter: brightness(70%) saturate(80%) contrast(80%);
+}
+.loadingCardOfCardList {
+  animation: loading 2s linear infinite;
+}
+@keyframes loading {
+  0% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*estilo pagina filtro*/
 .CardResultsFilterDiv {
   max-height: 1000px;
   background-color: #363636;
-  border: 0.1rem solid #ffca2c;
-  border-radius: 1rem;
+  border: 0.2rem solid #ffca2c;
+  border-radius: 0.3rem;
+}
+.inputDivSelects div select {
+  cursor: pointer;
 }
 .formDivFilterTag {
   background-color: #3f3e3e;
@@ -94,14 +123,21 @@ a {
   color: #000000;
 }
 /*estilo carta individual*/
+.iconCard {
+  min-width: 20px;
+  height: 20px;
+}
 .tableInfo li {
   background-color: #3a3a3a;
   border: 1px solid rgb(78, 77, 77);
   border-radius: 1rem;
   padding: 0.1rem;
 }
+.tableInfo li span {
+  padding-left: 0.5rem;
+}
 .tableInfo li p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 0.3rem;
 }
 .tableInfo li p img {
@@ -109,6 +145,7 @@ a {
 }
 .parallaxImg {
   width: 250px;
+  filter: brightness(120%) saturate(110%) contrast(110%);
 }
 .parallaxImgError {
   width: 400px;

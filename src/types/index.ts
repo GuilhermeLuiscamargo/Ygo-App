@@ -25,6 +25,7 @@ interface individualCard {
 interface individualCardProps {
   cards: individualCard[] | undefined;
 }
+
 interface searchCards {
   name: string;
   race: string;

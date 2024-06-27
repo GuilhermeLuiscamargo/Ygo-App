@@ -1,6 +1,7 @@
 import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function SearchResultList({ cardNames }: searchCardsProps) {
   return (
@@ -17,22 +18,26 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}
             >
-              <img
+              <Image
                 src={card.img}
                 alt={card.name}
                 className="itemResultListImg"
+                placeholder="blur"
+                blurDataURL={card.img}
+                width={70}
+                height={70}
               />
               <p>{card.name}</p>
               <div className="d-flex gap-1">
                 {card.attribute ? (
-                  <img
+                  <Image
                     src={attributeImg}
                     alt={card.attribute}
                     className="itemResultListImgDiv img-fluid"
                   />
                 ) : null}
 
-                <img
+                <Image
                   src={raceImg}
                   alt={card.race}
                   className=" itemResultListImgDiv img-fluid"

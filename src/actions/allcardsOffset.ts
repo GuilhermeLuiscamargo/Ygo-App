@@ -1,4 +1,7 @@
 "use server";
+
+import { error } from "console";
+
 export const allcardsOffset = async (
   num?: number,
   offset?: number,
@@ -10,9 +13,13 @@ export const allcardsOffset = async (
         `https://db.ygoprodeck.com/api/v7/cardinfo.php?&num=${num}&offset=${offset}${filter}`
       );
       const { data } = await res.json();
+
       return data as individualCard[];
     } catch (error) {
-      console.error("erro no fetch data", error);
+      console.error(
+        "erro no fetch data---------------------------------------  ",
+        error
+      );
       return undefined;
     }
   } else {
