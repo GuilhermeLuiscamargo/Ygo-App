@@ -1,4 +1,6 @@
 "use client";
+import Image from "next/image";
+import errorImg from "../../public/img/404.jpeg";
 
 import Parallax from "react-next-parallax";
 
@@ -10,10 +12,10 @@ export default function NotFound() {
         spotGlareSizePercent={120}
         shadow="0 0 2.5rem rgba(255, 255, 255, 1.5)"
       >
-        <img
+        <Image
+          src={errorImg}
           className="parallaxImgError img-fluid"
-          src="/img/404.jpeg"
-          alt="aconteceu um erro "
+          alt="Aconteceu um Erro"
         />
       </Parallax>
     </main>

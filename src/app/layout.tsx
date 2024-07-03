@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style/style.css";
+import type { Metadata } from "next";
 import logo from "../../public/img/exodiaLogo.jpg";
 import Image from "next/image";
-import type { Metadata } from "next";
 import Link from "next/link";
 import CardSearch from "@/components/search";
 
@@ -28,7 +28,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <div className="mainContainer container-fluid d-flex flex-column justify-content-between">
+        <div className="mainContainer container-fluid d-flex flex-column justify-content-between align-items-center">
           <header className="sticky-top">
             <nav className="navbar p-0">
               <Image src={logo} alt="logo" className="img-fluid" />
@@ -101,6 +101,9 @@ export default function RootLayout({
                 </a>
                 <a target="_blank" href="https://nextjs.org/docs">
                   NextJs
+                </a>
+                <a target="_blank" href="https://ygoprodeck.com/api-guide/">
+                  Api Yu-Gi-Oh
                 </a>
               </div>
             </div>

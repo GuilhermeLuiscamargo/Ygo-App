@@ -84,7 +84,7 @@ export function getType(race: string | undefined) {
       return thunder;
     case "Warrior":
       return warrior;
-    case "Winged-Beast":
+    case "Winged Beast":
       return wingedBeast;
     case "Wyrm":
       return wyrm;

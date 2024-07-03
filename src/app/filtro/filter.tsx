@@ -1,7 +1,8 @@
 "use client";
-import { allcardsOffset } from "@/actions/allcardsOffset";
+import { allcardsfill } from "@/actions/allcardsfill";
 import { fillstring } from "@/actions/cardsfill";
 import { CardList } from "@/components/cardlist";
+import { LoaderSpin } from "@/components/loaderSpin";
 import { CarregarCards } from "@/components/loadercards";
 import { useState } from "react";
 
@@ -17,6 +18,7 @@ export default function Filtro({ cards }: individualCardProps) {
   const [archetype, setArchtype] = useState<attributeFillters>("");
   const [data, setData] = useState(cards);
   const [filter, setFilter] = useState<attributeFillters>("");
+  const [erro, setErro] = useState<string | undefined>();
 
   const resetData = async () => setData(cards);
   const Reset = () => {
@@ -34,8 +36,9 @@ export default function Filtro({ cards }: individualCardProps) {
     setTimeout(resetData, 1);
   };
   const filteredCards = async (fill: attributeFillters) => {
-    const res = await allcardsOffset(24, 0, fill);
-    setData(res);
+    const res = await allcardsfill(24, 0, fill);
+    setData(res?.data);
+    setErro(res?.error);
   };
 
   const filterObj: fillInputs = {
@@ -734,7 +737,7 @@ export default function Filtro({ cards }: individualCardProps) {
                 ATK
               </label>
               <input
-                className=" form-control form-control-sm bg-dark text-white"
+                className=" form-control form-control-sm bg-dark text-warning"
                 type="number"
                 id="cardatk"
                 name="cardatk"
@@ -824,16 +827,19 @@ export default function Filtro({ cards }: individualCardProps) {
           </div>
         </form>
       </div>
+
       <div className="CardResultsFilterDiv w-75 overflow-auto p-2 text-center">
         {data ? (
           <div className="container-fluid d-flex flex-wrap gap-3">
             <CardList cards={data} />
-            <CarregarCards inicialPage={24} filter={filter} />
+            <CarregarCards inicialPage={24} filter={filter} />{" "}
           </div>
-        ) : (
+        ) : erro ? (
           <p className=" text-warning h3">
             As cartas em questão não existem!!!
           </p>
+        ) : (
+          <LoaderSpin classname="LoaderFilter" />
         )}
       </div>
     </main>

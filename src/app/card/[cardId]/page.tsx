@@ -31,6 +31,7 @@ export default async function AboutCard({ params }: props) {
             img={card.card_images[0].image_url_small}
             name={card.name}
           />
+
           <div className="cardInfoDiv container text-warning ">
             <h1>{card.name}</h1>
             <ul className="tableInfo w-75 d-flex flex-wrap  row-gap-3 column-gap-3">
@@ -41,7 +42,12 @@ export default async function AboutCard({ params }: props) {
               <li className="w-25">
                 <span>Typing</span>
                 <p>
-                  <Image src={raceImg} alt={card.race} className="iconCard" />{" "}
+                  <Image
+                    src={raceImg}
+                    alt={card.race}
+                    className="iconCard"
+                    width={20}
+                  />{" "}
                   {card.race}
                 </p>
               </li>

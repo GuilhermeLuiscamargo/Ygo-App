@@ -25,6 +25,12 @@ a {
   padding: 0;
   height: 100vh;
 }
+.LoadingSpinPages {
+  width: 100px;
+}
+.LoaderSpinCardLoader {
+  width: 3rem;
+}
 /* estilo do header*/
 header,
 nav {
@@ -55,7 +61,7 @@ nav img {
 /*estilo da pagina inicial*/
 
 .allCardsInicio {
-  max-height: 1000px;
+  height: 700px;
   background-color: #363636;
   border: 0.2rem solid #ffca2c;
   border-radius: 0.3rem;
@@ -91,7 +97,7 @@ nav img {
 }
 /*estilo pagina filtro*/
 .CardResultsFilterDiv {
-  max-height: 1000px;
+  height: 700px;
   background-color: #363636;
   border: 0.2rem solid #ffca2c;
   border-radius: 0.3rem;
@@ -106,6 +112,9 @@ nav img {
 }
 .valuesDivSelect input::placeholder {
   color: #ffc107;
+}
+.LoaderFilter {
+  width: 80px;
 }
 /*estilo footer*/
 .Contato,

@@ -1,6 +1,5 @@
 import loadingImg from "../../public/img/LoadingCard.jpg";
 import Image from "next/image";
-
 import Link from "next/link";
 
 export function CardList({ cards }: individualCardProps) {

@@ -25,6 +25,10 @@ interface individualCard {
 interface individualCardProps {
   cards: individualCard[] | undefined;
 }
+interface individualCardFill {
+  data?: individualCard[];
+  error?: string | undefined;
+}
 
 interface searchCards {
   name: string;

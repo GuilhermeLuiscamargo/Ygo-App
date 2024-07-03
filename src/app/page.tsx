@@ -12,6 +12,7 @@ const Home = async () => {
           {data ? (
             <>
               <CardList cards={data} />
+
               <CarregarCards inicialPage={24} />
             </>
           ) : (

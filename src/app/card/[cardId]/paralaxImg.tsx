@@ -2,11 +2,9 @@
 import Parallax from "react-next-parallax";
 
 export default function ParallaxImg({ img, name }: imgParalax) {
-  const err: boolean = img ? true : false;
-
   return (
     <>
-      {err ? (
+      {img ? (
         <Parallax
           scale={1.2}
           spotGlareSizePercent={130}

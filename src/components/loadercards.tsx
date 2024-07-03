@@ -1,9 +1,10 @@
 "use client";
-import { allcardsOffset } from "@/actions/allcardsOffset";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { Loader } from "./loader";
+import { allcardsOffset } from "@/actions/allcardsOffset";
 import { CardList } from "./cardlist";
+import { LoaderSpin } from "./loaderSpin";
+import { allcardsfill } from "@/actions/allcardsfill";
 
 export function CarregarCards({ inicialPage, filter }: loadcards) {
   const [cards, setCards] = useState<individualCard[]>([]);
@@ -17,8 +18,11 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
     await delay(250);
     const nextPage = page;
     const QtdCards = 24;
+    console.log(filter);
     if (filter) {
-      const newCards = (await allcardsOffset(QtdCards, nextPage, filter)) ?? [];
+      const res = await allcardsfill(QtdCards, nextPage, filter);
+      const newCards = res?.data ? res.data : [];
+      console.log(res, newCards);
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
       !newCards.length ? setLoader(!loader) : null;
@@ -39,7 +43,7 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
       <CardList cards={cards} />
       {loader ? (
         <div className=" text-center w-100 " ref={ref}>
-          <Loader />
+          <LoaderSpin classname="LoaderSpinCardLoader" />
         </div>
       ) : null}
     </>
