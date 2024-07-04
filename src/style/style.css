@@ -31,6 +31,15 @@ a {
 .LoaderSpinCardLoader {
   width: 3rem;
 }
+.SpanModalCard {
+  width: 400px;
+  height: 250px;
+  border: 2px solid red;
+  background-color: green;
+  position: absolute;
+  left: 0px;
+  z-index: 999;
+}
 /* estilo do header*/
 header,
 nav {
@@ -66,6 +75,7 @@ nav img {
   border: 0.2rem solid #ffca2c;
   border-radius: 0.3rem;
 }
+
 .cardOfCardList {
   background: #363636;
   box-shadow: 8px 8px 16px #2d2d2d, -8px -8px 16px #3f3f3f;

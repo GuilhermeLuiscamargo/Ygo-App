@@ -8,7 +8,7 @@ const Home = async () => {
   return (
     <>
       <main className="inicioMainTag container-fluid d-flex justify-content-center pt-4 pb-4">
-        <div className="allCardsInicio w-75 overflow-auto d-flex flex-wrap justify-content-center p-2 gap-3 ">
+        <div className="allCardsInicio w-75 overflow-scroll d-flex flex-wrap justify-content-center p-2 gap-3 ">
           {data ? (
             <>
               <CardList cards={data} />

@@ -107,7 +107,8 @@ export default async function AboutCard({ params }: props) {
                   </p>
                 </li>
               ) : null}
-              {card.atk >= 0 && card.def >= 0 ? (
+
+              {card?.atk >= 0 && card?.def >= 0 ? (
                 <>
                   <li className="w-25">
                     <span>ATK</span>
@@ -122,7 +123,7 @@ export default async function AboutCard({ params }: props) {
                     </p>
                   </li>
                 </>
-              ) : card.atk >= 0 ? (
+              ) : card?.atk >= 0 ? (
                 <li className="w-25">
                   <span>ATK</span>
                   <p>

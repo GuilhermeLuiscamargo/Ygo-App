@@ -27,11 +27,11 @@ export default function Filtro({ cards }: individualCardProps) {
     setLevel("");
     setLink("");
     setScale("");
-    setType(undefined);
-    setAttribute(undefined);
-    setRace(undefined);
-    setArchtype(undefined);
-    setFilter(undefined);
+    setType("");
+    setAttribute("");
+    setRace("");
+    setArchtype("");
+    setFilter("");
     setData(undefined);
     setTimeout(resetData, 1);
   };
@@ -53,6 +53,7 @@ export default function Filtro({ cards }: individualCardProps) {
     archetype: archetype,
   };
   const filterString = fillstring(filterObj);
+  console.log(filterString);
   return (
     <main className="mainFiltroTag container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5 ">
       <div className="formDivFilterTag  w-75">

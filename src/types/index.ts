@@ -6,8 +6,8 @@ interface individualCard {
   desc: string;
   pend_desc?: string;
   monster_desc?: string;
-  atk: number;
-  def: number;
+  atk?: number;
+  def?: number;
   level?: number;
   linkval?: number;
   scale?: number;
@@ -41,7 +41,7 @@ interface searchCardsProps {
   cardNames: searchCards[] | undefined;
 }
 interface fillInputs {
-  type?: string | undefined;
+  type?: string;
   atk?: string;
   def?: string;
   level?: string;
@@ -57,3 +57,7 @@ interface loadcards {
 }
 type attributeFillters = string | undefined;
 type imgParalax = { img?: string; name?: string };
+interface modal {
+  isOpen: number;
+  card: individualCard;
+}
