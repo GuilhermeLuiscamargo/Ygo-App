@@ -6,11 +6,11 @@ interface individualCard {
   desc: string;
   pend_desc?: string;
   monster_desc?: string;
-  atk?: number;
-  def?: number;
+  atk: number;
+  def: number;
   level?: number;
   linkval?: number;
-  scale?: number;
+  scale: number;
   race: string;
   attribute: string;
   archetype?: string;

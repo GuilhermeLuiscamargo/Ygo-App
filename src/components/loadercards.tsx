@@ -18,11 +18,10 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
     await delay(250);
     const nextPage = page;
     const QtdCards = 24;
-    console.log(filter);
     if (filter) {
       const res = await allcardsfill(QtdCards, nextPage, filter);
       const newCards = res?.data ? res.data : [];
-      console.log(res, newCards);
+
       setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
       !newCards.length ? setLoader(!loader) : null;

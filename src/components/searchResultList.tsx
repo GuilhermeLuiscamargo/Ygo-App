@@ -13,7 +13,7 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
           return (
             <Link
               href={`/card/${card.id}`}
-              key={`search=${card.id}`}
+              key={`search${card.id}`}
               type="submit"
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}
@@ -21,9 +21,7 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
               <Image
                 src={card.img}
                 alt={card.name}
-                className="itemResultListImg"
-                placeholder="blur"
-                blurDataURL={card.img}
+                id="itemResultListImg"
                 width={70}
                 height={70}
               />

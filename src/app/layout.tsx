@@ -31,7 +31,12 @@ export default function RootLayout({
         <div className="mainContainer container-fluid d-flex flex-column justify-content-between align-items-center">
           <header className="sticky-top">
             <nav className="navbar p-0">
-              <Image src={logo} alt="logo" className="img-fluid" />
+              <Image
+                src={logo}
+                alt="logo"
+                className="img-fluid"
+                priority={true}
+              />
               <div className="d-flex gap-5 h5">
                 <Link href={"/"} className="link-warning">
                   Inicio

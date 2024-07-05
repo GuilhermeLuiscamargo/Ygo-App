@@ -35,7 +35,7 @@ export default async function AboutCard({ params }: props) {
           <div className="cardInfoDiv container text-warning ">
             <h1>{card.name}</h1>
             <ul className="tableInfo w-75 d-flex flex-wrap  row-gap-3 column-gap-3">
-              <li className="w-25">
+              <li className="w-50">
                 <span>Type</span>
                 <p>{card.type}</p>
               </li>
@@ -108,7 +108,7 @@ export default async function AboutCard({ params }: props) {
                 </li>
               ) : null}
 
-              {card?.atk >= 0 && card?.def >= 0 ? (
+              {card.atk >= 0 && card.def >= 0 ? (
                 <>
                   <li className="w-25">
                     <span>ATK</span>

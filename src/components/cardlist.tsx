@@ -7,31 +7,25 @@ import { useState } from "react";
 
 export function CardList({ cards }: individualCardProps) {
   const [open, setOpen] = useState<number>(0);
-  const mousePosition = (e: MouseEvent, card: individualCard) => {
-    setOpen(card.id);
-    alert(e.clientX);
-  };
+
   return (
     <>
       {cards
         ? cards.map((card) => {
             return (
-              <>
-                <Link
-                  href={`/card/${card.id}`}
-                  key={card.id}
-                  className="cardOfCardList"
-                  title={card.name}
-                  onMouseOver={() => setOpen(card.id)}
-                  onMouseOut={() => setOpen(0)}
-                >
+              <div
+                key={card.id}
+                className="cardOfCardList"
+                onMouseOver={() => setOpen(card.id)}
+                onMouseOut={() => setOpen(0)}
+              >
+                <ModalCard card={card} isOpen={open} />
+                <Link href={`/card/${card.id}`} title={card.name}>
                   {card.card_images[0].image_url ? (
                     <Image
                       className="cardOfCardListImg img-fluid"
                       src={card.card_images[0].image_url}
                       alt={card.name}
-                      placeholder="blur"
-                      blurDataURL={card.card_images[0].image_url}
                       width={150}
                       height={214}
                     />
@@ -43,8 +37,7 @@ export function CardList({ cards }: individualCardProps) {
                     />
                   )}
                 </Link>
-                <ModalCard isOpen={open} card={card} />
-              </>
+              </div>
             );
           })
         : null}
