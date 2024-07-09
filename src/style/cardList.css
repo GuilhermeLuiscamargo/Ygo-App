@@ -1,0 +1,112 @@
+/*animationflip*/
+/*** Directions ***/
+.flip-horizontal-left:hover .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+.flip-horizontal-left .flip-card-back {
+  transform: rotateY(-180deg);
+}
+.flip-card {
+  background-color: transparent;
+  width: 150px;
+  height: 210px;
+  /* Remove this if you don't want the 3D effect */
+}
+.flip-card-inner {
+  position: relative;
+  width: 150px;
+  height: 210px;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 150px;
+  height: 220px;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  padding: 0.2rem;
+  background-image: url("../../public/img/LoadingCard.jpg");
+  background-position: center;
+  background-size: cover;
+  filter: brightness(120%) saturate(110%) contrast(110%);
+}
+/*------------------------------------------------------------------------------------------------------*/
+.cardOfCardList {
+  background: #363636;
+  box-shadow: 8px 8px 16px #2d2d2d, -8px -8px 16px #3f3f3f;
+  max-width: 150px;
+}
+.cardOfCardListImg {
+  filter: brightness(120%) saturate(110%) contrast(110%);
+}
+.loadingCardOfCardList {
+  filter: brightness(120%) saturate(110%) contrast(110%);
+}
+
+/*Modal style-------------------------------------------------------------------------------------*/
+.SpanModalCard {
+  max-width: 150px;
+  height: 210px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.SpanModalCard::-webkit-scrollbar {
+  display: none;
+}
+.line1,
+.line2,
+.line3,
+.line4,
+.line5 {
+  display: flex;
+}
+.iconModalImg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+.line1 {
+  padding: 0.3rem;
+}
+
+.line1 p {
+  margin: 0;
+  font-size: 0.7rem;
+}
+.line2 {
+  display: flex;
+  justify-content: center;
+  font-size: 0.6rem;
+}
+.line2 p {
+  margin: 0;
+}
+.line2 span {
+  justify-self: center;
+}
+.line3 p {
+  margin: 0;
+}
+.line3 p:first-child {
+  font-size: 0.7rem;
+}
+.line3 span p {
+  font-size: 0.7rem;
+}
+.line4 p {
+  margin: 0;
+  font-size: 0.7rem;
+}
+.line5 {
+  flex-direction: column;
+  padding: 0.5rem;
+}
+.line5 p {
+  margin: 0;
+  font-size: 0.7rem;
+}

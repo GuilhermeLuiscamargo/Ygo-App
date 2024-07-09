@@ -1,3 +1,4 @@
+import "../../../style/individualCard.css";
 import Image from "next/image";
 import rank from "../../../../public/img/marcadores/rank.webp";
 import level from "../../../../public/img/marcadores/level.svg";

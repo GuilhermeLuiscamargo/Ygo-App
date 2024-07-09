@@ -1,0 +1,28 @@
+/*estilo carta individual*/
+.iconCard {
+  min-width: 20px;
+  height: 20px;
+}
+.tableInfo li {
+  background-color: #3a3a3a;
+  border: 1px solid rgb(78, 77, 77);
+  border-radius: 1rem;
+  padding: 0.1rem;
+}
+.tableInfo li span {
+  padding-left: 0.5rem;
+}
+.tableInfo li p {
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+.tableInfo li p img {
+  width: 0.9rem;
+}
+.parallaxImg {
+  width: 250px;
+  filter: brightness(120%) saturate(110%) contrast(110%);
+}
+.parallaxImgError {
+  width: 400px;
+}

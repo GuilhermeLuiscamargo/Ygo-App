@@ -11,13 +11,15 @@ export default function ModalCard({ isOpen, card }: modal) {
   const typeImg = getType(card.race);
   if (isOpen === card.id) {
     return (
-      <div className="SpanModalCard text-warning ">
+      <div className="SpanModalCard  text-white">
         <div className="line1 w-100">
           <strong>
-            <p>{card.name}</p>
+            <p className=" align-self-center">{card.name}</p>
           </strong>
+        </div>
+        <div className="line2">
           {card.frameType === "spell" || card.frameType === "trap" ? (
-            <span className=" d-flex gap-3 align-items-center">
+            <span className=" d-flex gap-3 align-items-center ">
               <p>{card.type}</p>
               <p>
                 <Image src={typeImg} alt={card.type} className="iconModalImg" />
@@ -31,7 +33,7 @@ export default function ModalCard({ isOpen, card }: modal) {
                   src={atributeImg}
                   alt={card.attribute}
                   className="iconModalImg"
-                />
+                />{" "}
                 {card.attribute}
               </p>
             </>
@@ -39,7 +41,7 @@ export default function ModalCard({ isOpen, card }: modal) {
         </div>
         {card.frameType !== "spell" && card.frameType !== "trap" ? (
           <>
-            <div className="line2 ">
+            <div className="line3 d-flex flex-column">
               <p>
                 [{card.race}/{card.type}]
               </p>
@@ -52,7 +54,7 @@ export default function ModalCard({ isOpen, card }: modal) {
                   </p>
                 </>
               ) : card.frameType === "xyz_pendulum" ? (
-                <span className=" d-flex align-items-center gap-3">
+                <span className=" d-flex align-items-center justify-content-center gap-3">
                   <p>
                     <Image src={rank} alt="rank" className="iconModalImg" />
                     {card.level}
@@ -63,7 +65,7 @@ export default function ModalCard({ isOpen, card }: modal) {
                   </p>
                 </span>
               ) : card.level && card.scale >= 0 ? (
-                <span className=" d-flex align-items-center gap-3">
+                <span className=" d-flex align-items-center justify-content-center gap-3">
                   <p>
                     <Image src={level} alt="level" className="iconModalImg" />
                     {card.level}
@@ -74,13 +76,15 @@ export default function ModalCard({ isOpen, card }: modal) {
                   </p>
                 </span>
               ) : card.level ? (
-                <p>
-                  <Image src={level} alt="level" className="iconModalImg" />
-                  {card.level}
-                </p>
+                <span className=" d-flex align-items-center justify-content-center ">
+                  <p>
+                    <Image src={level} alt="level" className="iconModalImg" />
+                    {card.level}
+                  </p>
+                </span>
               ) : null}
             </div>
-            <div className="line3">
+            <div className="line4">
               {card.linkval ? (
                 <p>
                   ATK/{card.atk}{" "}
@@ -95,22 +99,28 @@ export default function ModalCard({ isOpen, card }: modal) {
             </div>
           </>
         ) : null}
-        <div className="line4 w-100">
+        <div className="line5 w-100">
           {card.pend_desc ? (
             <>
               <p>
-                [Pendulum effect]
+                <strong>[Pendulum effect]</strong>
                 <br />
                 {card.pend_desc}
               </p>
+              <br />
               <p>
-                [Monster effect]
+                <strong>[Monster effect]</strong>
                 <br />
                 {card.monster_desc}
               </p>
             </>
           ) : (
-            <p>{card.desc}</p>
+            <>
+              <p>
+                <strong>[Description]</strong>
+              </p>
+              <p>{card.desc}</p>
+            </>
           )}
         </div>
       </div>

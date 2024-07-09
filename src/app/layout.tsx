@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../style/style.css";
+import "../style/global.css";
 import type { Metadata } from "next";
 import logo from "../../public/img/exodiaLogo.jpg";
 import Image from "next/image";

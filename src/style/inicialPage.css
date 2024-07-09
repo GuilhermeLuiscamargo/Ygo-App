@@ -1,0 +1,7 @@
+/*estilo da pagina inicial*/
+.allCardsInicio {
+  height: 700px;
+  background-color: #363636;
+  border: 0.2rem solid #ffca2c;
+  border-radius: 0.3rem;
+}

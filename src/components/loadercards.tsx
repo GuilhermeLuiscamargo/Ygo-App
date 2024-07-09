@@ -42,7 +42,7 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
       <CardList cards={cards} />
       {loader ? (
         <div className=" text-center w-100 " ref={ref}>
-          <LoaderSpin classname="LoaderSpinCardLoader" />
+          <LoaderSpin classname="LoaderSpin" />
         </div>
       ) : null}
     </>

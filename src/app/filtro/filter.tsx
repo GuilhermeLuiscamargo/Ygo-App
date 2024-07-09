@@ -1,4 +1,5 @@
 "use client";
+import "../../style/filterPage.css";
 import { allcardsfill } from "@/actions/allcardsfill";
 import { fillstring } from "@/actions/cardsfill";
 import { CardList } from "@/components/cardlist";
@@ -830,14 +831,12 @@ export default function Filtro({ cards }: individualCardProps) {
 
       <div className="CardResultsFilterDiv w-75 overflow-auto p-2 text-center">
         {data ? (
-          <div className="container-fluid d-flex flex-wrap gap-3">
+          <div className="container-fluid d-flex flex-wrap gap-3 align-self-center justify-content-center">
             <CardList cards={data} />
             <CarregarCards inicialPage={24} filter={filter} />{" "}
           </div>
         ) : erro ? (
-          <p className=" text-warning h3">
-            As cartas em questão não existem!!!
-          </p>
+          <p className=" text-warning h3">Carta não encontrada!!!</p>
         ) : (
           <LoaderSpin classname="LoaderFilter" />
         )}

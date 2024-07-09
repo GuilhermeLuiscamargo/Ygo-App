@@ -1,0 +1,21 @@
+/*estilo pagina filtro*/
+.CardResultsFilterDiv {
+  height: 700px;
+  background-color: #363636;
+  border: 0.2rem solid #ffca2c;
+  border-radius: 0.3rem;
+}
+.inputDivSelects div select {
+  cursor: pointer;
+}
+.formDivFilterTag {
+  background-color: #3f3e3e;
+  border: 0.2rem solid #797777;
+  border-radius: 1rem;
+}
+.valuesDivSelect input::placeholder {
+  color: #ffc107;
+}
+.LoaderFilter {
+  width: 80px;
+}
