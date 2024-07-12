@@ -1,4 +1,4 @@
-export function fillstring(inputs: fillInputs) {
+export function fillstring(inputs: IfilterInputsObject) {
   const filtros: string[] = [];
   if (inputs) {
     if (inputs.archetype) {
@@ -27,6 +27,9 @@ export function fillstring(inputs: fillInputs) {
     }
     if (inputs.type) {
       filtros.push(`&type=${inputs.type}`);
+    }
+    if (inputs.format) {
+      filtros.push(`&format=${inputs.format}`);
     }
   }
   return filtros.join("");

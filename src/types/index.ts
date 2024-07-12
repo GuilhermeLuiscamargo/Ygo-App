@@ -1,4 +1,5 @@
-interface individualCard {
+/*Card----------------------------------------------------*/
+interface IindividualCard {
   id: number;
   name: string;
   type: string;
@@ -22,25 +23,15 @@ interface individualCard {
     }
   ];
 }
-interface individualCardProps {
-  cards: individualCard[] | undefined;
+interface IindividualCardProps {
+  cards: IindividualCard[] | undefined;
 }
-interface individualCardFill {
-  data?: individualCard[];
+/*filter page----------------------------------------------------*/
+interface IcardsFiltered {
+  data?: IindividualCard[];
   error?: string | undefined;
 }
-
-interface searchCards {
-  name: string;
-  race: string;
-  attribute?: string;
-  img: string;
-  id: number;
-}
-interface searchCardsProps {
-  cardNames: searchCards[] | undefined;
-}
-interface fillInputs {
+interface IfilterInputsObject {
   type?: string;
   atk?: string;
   def?: string;
@@ -50,14 +41,39 @@ interface fillInputs {
   race?: string;
   attribute?: string;
   archetype?: string;
+  format?: string;
 }
-interface loadcards {
+/*search input----------------------------------------------------*/
+interface IsearchCards {
+  name: string;
+  race: string;
+  attribute?: string;
+  img: string;
+  alternativeImg: string;
+  id: number;
+}
+interface IsearchCardsProps {
+  cardNames: IsearchCards[] | undefined;
+}
+/*loader cards----------------------------------------------------*/
+interface Iloadcards {
+  QtdCards: number;
   inicialPage: number;
   filter?: string;
 }
-type attributeFillters = string | undefined;
-type imgParalax = { img?: string; name?: string };
-interface modal {
+
+/*cardList----------------------------------------------------*/
+interface Imodal {
   isOpen: number;
-  card: individualCard;
+  card: IindividualCard;
+}
+/*individual card page----------------------------------------------------*/
+interface IaboutCardprop {
+  params: {
+    cardId: string;
+  };
+}
+interface IimgParalax {
+  img?: string;
+  name?: string;
 }

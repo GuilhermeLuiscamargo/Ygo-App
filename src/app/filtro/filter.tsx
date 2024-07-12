@@ -1,59 +1,56 @@
 "use client";
 import "../../style/filterPage.css";
-import { allcardsfill } from "@/actions/allcardsfill";
+import { allcardsfiltered } from "@/actions/allcardsfiltered";
 import { fillstring } from "@/actions/cardsfill";
 import { CardList } from "@/components/cardlist";
 import { LoaderSpin } from "@/components/loaderSpin";
-import { CarregarCards } from "@/components/loadercards";
+import { LoaderCards } from "@/components/loadercards";
 import { useState } from "react";
 
-export default function Filtro({ cards }: individualCardProps) {
-  const [atk, setAtk] = useState<attributeFillters>("");
-  const [def, setDef] = useState<attributeFillters>("");
-  const [level, setLevel] = useState<attributeFillters>("");
-  const [link, setLink] = useState<attributeFillters>("");
-  const [scale, setScale] = useState<attributeFillters>("");
-  const [type, setType] = useState<attributeFillters>("");
-  const [attribute, setAttribute] = useState<attributeFillters>("");
-  const [race, setRace] = useState<attributeFillters>("");
-  const [archetype, setArchtype] = useState<attributeFillters>("");
-  const [data, setData] = useState(cards);
-  const [filter, setFilter] = useState<attributeFillters>("");
-  const [erro, setErro] = useState<string | undefined>();
-
-  const resetData = async () => setData(cards);
-  const Reset = () => {
-    setAtk("");
-    setDef("");
-    setLevel("");
-    setLink("");
-    setScale("");
-    setType("");
-    setAttribute("");
-    setRace("");
-    setArchtype("");
+export default function Filter({ data, error }: IcardsFiltered) {
+  const [fetchResponse, setFetchResponse] = useState<IcardsFiltered>({
+    data: data,
+    error: error,
+  });
+  const [filterInputsObject, setFilterInputsObject] =
+    useState<IfilterInputsObject>({
+      atk: "",
+      def: "",
+      level: "",
+      linkval: "",
+      scale: "",
+      type: "",
+      attribute: "",
+      race: "",
+      archetype: "",
+      format: "",
+    });
+  const [filter, setFilter] = useState<string | undefined>("");
+  const filteredCards = async (fill: string | undefined) => {
+    const res = await allcardsfiltered(28, 0, fill);
+    setFetchResponse(() => ({ data: res?.data, error: res?.error }));
+  };
+  const ResetForm = () => {
+    const resetFetchData = async () => {
+      setFetchResponse((prev) => ({ ...prev, data: data }));
+    };
+    setFilterInputsObject({
+      atk: "",
+      def: "",
+      level: "",
+      linkval: "",
+      scale: "",
+      type: "",
+      attribute: "",
+      race: "",
+      archetype: "",
+      format: "",
+    });
     setFilter("");
-    setData(undefined);
-    setTimeout(resetData, 1);
+    setFetchResponse(() => ({ data: undefined, error: undefined }));
+    setTimeout(resetFetchData, 500);
   };
-  const filteredCards = async (fill: attributeFillters) => {
-    const res = await allcardsfill(24, 0, fill);
-    setData(res?.data);
-    setErro(res?.error);
-  };
-
-  const filterObj: fillInputs = {
-    type: type,
-    atk: atk,
-    def: def,
-    level: level,
-    linkval: link,
-    scale: scale,
-    race: race,
-    attribute: attribute,
-    archetype: archetype,
-  };
-  const filterString = fillstring(filterObj);
+  const filterString = fillstring(filterInputsObject);
   return (
     <main className="mainFiltroTag container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5 ">
       <div className="formDivFilterTag  w-75">
@@ -62,7 +59,7 @@ export default function Filtro({ cards }: individualCardProps) {
           className="w-100 text-warning d-flex flex-column gap-3 p-3 "
           onSubmit={(ev) => {
             ev.preventDefault();
-            setData(undefined);
+            setFetchResponse(() => ({ data: undefined, error: undefined }));
             setFilter(filterString);
             filteredCards(filterString);
           }}
@@ -74,8 +71,14 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-type"
                 onChange={(ev) =>
                   ev.target.value === "Select Type"
-                    ? setType(undefined)
-                    : setType(ev.target.value)
+                    ? setFilterInputsObject((prev) => ({
+                        ...prev,
+                        type: undefined,
+                      }))
+                    : setFilterInputsObject((prev) => ({
+                        ...prev,
+                        type: ev.target.value,
+                      }))
                 }
               >
                 <option>Select Type</option>
@@ -115,8 +118,14 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-attribute"
                 onChange={(ev) =>
                   ev.target.value === "Select Attribute"
-                    ? setAttribute(undefined)
-                    : setAttribute(ev.target.value)
+                    ? setFilterInputsObject((prev) => ({
+                        ...prev,
+                        attribute: undefined,
+                      }))
+                    : setFilterInputsObject((prev) => ({
+                        ...prev,
+                        attribute: ev.target.value,
+                      }))
                 }
               >
                 <option>Select Attribute</option>
@@ -135,8 +144,14 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-race"
                 onChange={(ev) =>
                   ev.target.value === "Select Race"
-                    ? setRace(undefined)
-                    : setRace(ev.target.value)
+                    ? setFilterInputsObject((prev) => ({
+                        ...prev,
+                        race: undefined,
+                      }))
+                    : setFilterInputsObject((prev) => ({
+                        ...prev,
+                        race: ev.target.value,
+                      }))
                 }
               >
                 <option>Select Race</option>
@@ -181,8 +196,14 @@ export default function Filtro({ cards }: individualCardProps) {
                 id="filter-archetype"
                 onChange={(ev) =>
                   ev.target.value === "Select Archetype"
-                    ? setArchtype(undefined)
-                    : setArchtype(ev.target.value)
+                    ? setFilterInputsObject((prev) => ({
+                        ...prev,
+                        archetype: undefined,
+                      }))
+                    : setFilterInputsObject((prev) => ({
+                        ...prev,
+                        archetype: ev.target.value,
+                      }))
                 }
               >
                 <option>Select Archetype</option>
@@ -730,6 +751,29 @@ export default function Filtro({ cards }: individualCardProps) {
                 <option>Zoodiac</option> ?&gt;
               </select>
             </div>
+            <div className="w-25">
+              <select
+                className="selectArchtype form-control form-control-sm bg-dark text-warning"
+                onChange={(ev) =>
+                  ev.target.value === "Select Format"
+                    ? setFilterInputsObject((prev) => ({
+                        ...prev,
+                        format: undefined,
+                      }))
+                    : setFilterInputsObject((prev) => ({
+                        ...prev,
+                        format: ev.target.value,
+                      }))
+                }
+              >
+                <option>Select Format</option>
+                <option>Ocg</option>
+                <option>Tcg</option>
+                <option>Speed Duel</option>
+                <option>Rush Duel</option>
+                <option>Master Duel</option>
+              </select>
+            </div>
           </div>
 
           <div className="valuesDivSelect d-flex gap-3">
@@ -742,12 +786,17 @@ export default function Filtro({ cards }: individualCardProps) {
                 type="number"
                 id="cardatk"
                 name="cardatk"
-                value={atk}
+                value={filterInputsObject.atk}
                 step={50}
                 min={0}
                 max={5000}
                 placeholder="max 5000"
-                onChange={(ev) => setAtk(ev.target.value)}
+                onChange={(ev) =>
+                  setFilterInputsObject((prev) => ({
+                    ...prev,
+                    atk: ev.target.value,
+                  }))
+                }
               />
             </div>
             <div className="form-def w-25">
@@ -759,12 +808,17 @@ export default function Filtro({ cards }: individualCardProps) {
                 type="number"
                 id="defLabel"
                 name="defLabel"
-                value={def}
+                value={filterInputsObject.def}
                 step={50}
                 min={0}
                 max={5000}
                 placeholder="max 5000"
-                onChange={(ev) => setDef(ev.target.value)}
+                onChange={(ev) =>
+                  setFilterInputsObject((prev) => ({
+                    ...prev,
+                    def: ev.target.value,
+                  }))
+                }
               />
             </div>
             <div className="form-level w-25">
@@ -776,12 +830,17 @@ export default function Filtro({ cards }: individualCardProps) {
                 type="number"
                 id="levelLabel"
                 name="levelLabel"
-                value={level}
+                value={filterInputsObject.level}
                 min={1}
                 max={12}
                 step={1}
                 placeholder="max 12"
-                onChange={(ev) => setLevel(ev.target.value)}
+                onChange={(ev) =>
+                  setFilterInputsObject((prev) => ({
+                    ...prev,
+                    level: ev.target.value,
+                  }))
+                }
               />
             </div>
             <div className="form-linkValue w-25">
@@ -793,12 +852,17 @@ export default function Filtro({ cards }: individualCardProps) {
                 type="number"
                 id="linkLabel"
                 name="linkLabel"
-                value={link}
+                value={filterInputsObject.linkval}
                 min={0}
                 max={6}
                 step={1}
                 placeholder="max 6"
-                onChange={(ev) => setLink(ev.target.value)}
+                onChange={(ev) =>
+                  setFilterInputsObject((prev) => ({
+                    ...prev,
+                    linkval: ev.target.value,
+                  }))
+                }
               />
             </div>
             <div className="form-scalePendulumValue w-25">
@@ -809,33 +873,38 @@ export default function Filtro({ cards }: individualCardProps) {
                 className=" form-control form-control-sm bg-dark text-warning"
                 type="number"
                 id="scaleLabel"
-                value={scale}
+                value={filterInputsObject.scale}
                 min={0}
                 max={13}
                 step={1}
                 placeholder="max 13"
-                onChange={(ev) => setScale(ev.target.value)}
+                onChange={(ev) =>
+                  setFilterInputsObject((prev) => ({
+                    ...prev,
+                    scale: ev.target.value,
+                  }))
+                }
               />
             </div>
           </div>
           <div className="btnFormDiv d-flex gap-3">
-            <button className="btn btn-danger" type="reset" onClick={Reset}>
-              Resetar filtro
+            <button className="btn btn-danger" type="reset" onClick={ResetForm}>
+              Reset filter
             </button>
             <button className="btn btn-warning" type="submit">
-              Filtrar
+              Filter
             </button>
           </div>
         </form>
       </div>
 
-      <div className="CardResultsFilterDiv w-75 overflow-auto p-2 text-center">
-        {data ? (
-          <div className="container-fluid d-flex flex-wrap gap-3 align-self-center justify-content-center">
-            <CardList cards={data} />
-            <CarregarCards inicialPage={24} filter={filter} />{" "}
+      <div className="CardResultsFilterDiv w-75 overflow-auto text-center">
+        {fetchResponse.data ? (
+          <div className="container-fluid d-flex flex-wrap column-gap-3 row-gap-4 pb-4 pt-3 align-self-center justify-content-center">
+            <CardList cards={fetchResponse.data} />
+            <LoaderCards inicialPage={28} QtdCards={28} filter={filter} />
           </div>
-        ) : erro ? (
+        ) : fetchResponse.error ? (
           <p className=" text-warning h3">Carta não encontrada!!!</p>
         ) : (
           <LoaderSpin classname="LoaderFilter" />

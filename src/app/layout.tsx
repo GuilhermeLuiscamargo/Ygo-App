@@ -39,10 +39,10 @@ export default function RootLayout({
               />
               <div className="d-flex gap-5 h5">
                 <Link href={"/"} className="link-warning">
-                  Inicio
+                  Start
                 </Link>
                 <Link href={"/filtro"} className="link-warning">
-                  Filtro
+                  Filter
                 </Link>
               </div>
               <CardSearch />
@@ -52,7 +52,7 @@ export default function RootLayout({
           <footer className="footerLayout w-100 bg-warning container-fluid d-flex justify-content-center  p-3">
             <div className=" w-50 d-flex justify-content-between">
               <div className="Contato d-flex flex-column">
-                <h2 className="">Contato</h2>
+                <h2 className="">Contact</h2>
                 <a
                   target="_blank"
                   href="mailto:guilhermeluiscamargoneto@gmail.com"
@@ -79,7 +79,7 @@ export default function RootLayout({
                 </a>
               </div>
               <div className="Tecnologias d-flex flex-column">
-                <h2>Tecnologias</h2>
+                <h2>Technologies</h2>
                 <a
                   target="_blank"
                   href="https://developer.mozilla.org/pt-BR/docs/Web/HTML"

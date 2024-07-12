@@ -1,5 +1,5 @@
-/*animationflip*/
-/*** Directions ***/
+/*animationflip---------------------------------------------------------------------------------------------------*/
+/*animation left*/
 .flip-horizontal-left:hover .flip-card-inner {
   transform: rotateY(-180deg);
 }
@@ -7,11 +7,12 @@
 .flip-horizontal-left .flip-card-back {
   transform: rotateY(-180deg);
 }
+/*positions*/
 .flip-card {
   background-color: transparent;
   width: 150px;
   height: 210px;
-  /* Remove this if you don't want the 3D effect */
+  perspective: 1000px;
 }
 .flip-card-inner {
   position: relative;
@@ -20,7 +21,7 @@
   transition: transform 0.7s;
   transform-style: preserve-3d;
 }
-/* Position the front and back side */
+/*card faces*/
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -28,6 +29,7 @@
   height: 220px;
   backface-visibility: hidden;
 }
+/*card back face*/
 .flip-card-back {
   padding: 0.2rem;
   background-image: url("../../public/img/LoadingCard.jpg");
@@ -35,11 +37,10 @@
   background-size: cover;
   filter: brightness(120%) saturate(110%) contrast(110%);
 }
-/*------------------------------------------------------------------------------------------------------*/
+/*Card list------------------------------------------------------------------------------------------------------*/
 .cardOfCardList {
-  background: #363636;
-  box-shadow: 8px 8px 16px #2d2d2d, -8px -8px 16px #3f3f3f;
   max-width: 150px;
+  max-height: 210px;
 }
 .cardOfCardListImg {
   filter: brightness(120%) saturate(110%) contrast(110%);
@@ -48,7 +49,7 @@
   filter: brightness(120%) saturate(110%) contrast(110%);
 }
 
-/*Modal style-------------------------------------------------------------------------------------*/
+/*Modal-------------------------------------------------------------------------------------*/
 .SpanModalCard {
   max-width: 150px;
   height: 210px;
@@ -70,43 +71,47 @@
   width: 1.3rem;
   height: 1.3rem;
 }
-.line1 {
+/*------Modal line1 --------------------------------------*/
+.nameLineModal {
   padding: 0.3rem;
 }
-
-.line1 p {
+.nameLineModal p {
   margin: 0;
   font-size: 0.7rem;
 }
-.line2 {
+/*-------Modal line2-------------------------------------------------*/
+.attributeTypeRaceLineModal {
   display: flex;
   justify-content: center;
   font-size: 0.6rem;
 }
-.line2 p {
+.attributeTypeRaceLineModal p {
   margin: 0;
 }
-.line2 span {
+.attributeTypeRaceLineModal span {
   justify-self: center;
 }
-.line3 p {
+/*--------Modal line3------------------------------------------------------------------*/
+.levelRankScaleLineModal p {
   margin: 0;
 }
-.line3 p:first-child {
+.levelRankScaleLineModal p:first-child {
   font-size: 0.7rem;
 }
-.line3 span p {
+.levelRankScaleLineModal span p {
   font-size: 0.7rem;
 }
-.line4 p {
+/*---------Modal line4------------------------------------------------------------------------------*/
+.atkDefLineModal p {
   margin: 0;
   font-size: 0.7rem;
 }
-.line5 {
+/*--------Modal line5------------------------------------------------------------------------------------------*/
+.descriptionCardLineModal {
   flex-direction: column;
   padding: 0.5rem;
 }
-.line5 p {
+.descriptionCardLineModal p {
   margin: 0;
   font-size: 0.7rem;
 }

@@ -1,5 +1,5 @@
 import { LoaderSpin } from "@/components/loaderSpin";
 
-export default function loading() {
+export default function Loading() {
   return <LoaderSpin classname="LoadingComponent" />;
 }

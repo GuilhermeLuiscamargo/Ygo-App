@@ -6,9 +6,9 @@ import SearchResultList from "./searchResultList";
 function SearchList({
   search,
 }: {
-  search: (search: string) => Promise<searchCards[]>;
+  search: (search: string) => Promise<IsearchCards[]>;
 }) {
-  const [cardNames, setCardNames] = useState<searchCards[]>([]);
+  const [cardNames, setCardNames] = useState<IsearchCards[]>([]);
   const [searchString, setSearchString] = useState("");
   const onChange = async () => {
     setCardNames(await search(searchString));
@@ -17,7 +17,7 @@ function SearchList({
     new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(() => {
-    search("").then((names) => setCardNames(names));
+    search("vall").then((names) => setCardNames(names));
   }, [search]);
   return (
     <div

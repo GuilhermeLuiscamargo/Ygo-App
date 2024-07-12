@@ -6,18 +6,18 @@ import { getAtributteImg } from "@/actions/getAtributte";
 import Image from "next/image";
 import { getType } from "@/actions/getType";
 
-export default function ModalCard({ isOpen, card }: modal) {
+export default function ModalCard({ isOpen, card }: Imodal) {
   const atributeImg = getAtributteImg(card.attribute);
   const typeImg = getType(card.race);
   if (isOpen === card.id) {
     return (
       <div className="SpanModalCard  text-white">
-        <div className="line1 w-100">
+        <div className="nameLineModal w-100">
           <strong>
             <p className=" align-self-center">{card.name}</p>
           </strong>
         </div>
-        <div className="line2">
+        <div className="attributeTypeRaceLineModal">
           {card.frameType === "spell" || card.frameType === "trap" ? (
             <span className=" d-flex gap-3 align-items-center ">
               <p>{card.type}</p>
@@ -26,7 +26,7 @@ export default function ModalCard({ isOpen, card }: modal) {
                 {card.race}
               </p>
             </span>
-          ) : (
+          ) : card.attribute ? (
             <>
               <p>
                 <Image
@@ -37,11 +37,13 @@ export default function ModalCard({ isOpen, card }: modal) {
                 {card.attribute}
               </p>
             </>
+          ) : (
+            <></>
           )}
         </div>
         {card.frameType !== "spell" && card.frameType !== "trap" ? (
           <>
-            <div className="line3 d-flex flex-column">
+            <div className="levelRankScaleLineModal d-flex flex-column">
               <p>
                 [{card.race}/{card.type}]
               </p>
@@ -84,7 +86,7 @@ export default function ModalCard({ isOpen, card }: modal) {
                 </span>
               ) : null}
             </div>
-            <div className="line4">
+            <div className="atkDefLineModal">
               {card.linkval ? (
                 <p>
                   ATK/{card.atk}{" "}
@@ -99,7 +101,7 @@ export default function ModalCard({ isOpen, card }: modal) {
             </div>
           </>
         ) : null}
-        <div className="line5 w-100">
+        <div className="descriptionCardLineModal w-100">
           {card.pend_desc ? (
             <>
               <p>

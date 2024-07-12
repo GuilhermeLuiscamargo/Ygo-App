@@ -3,7 +3,7 @@ import { getType } from "@/actions/getType";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function SearchResultList({ cardNames }: searchCardsProps) {
+export default function SearchResultList({ cardNames }: IsearchCardsProps) {
   return (
     <>
       {cardNames?.length ? (
@@ -18,13 +18,23 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}
             >
-              <Image
-                src={card.img}
-                alt={card.name}
-                id="itemResultListImg"
-                width={70}
-                height={70}
-              />
+              {raceImg ? (
+                <Image
+                  src={card.img}
+                  alt={card.name}
+                  id="itemResultListImg"
+                  width={70}
+                  height={70}
+                />
+              ) : (
+                <Image
+                  src={card.alternativeImg}
+                  alt={card.name}
+                  id="itemResultListImg"
+                  width={70}
+                  height={70}
+                />
+              )}
               <p>{card.name}</p>
               <div className="d-flex gap-1">
                 {card.attribute ? (
@@ -34,12 +44,13 @@ export default function SearchResultList({ cardNames }: searchCardsProps) {
                     className="itemResultListImgDiv img-fluid"
                   />
                 ) : null}
-
-                <Image
-                  src={raceImg}
-                  alt={card.race}
-                  className=" itemResultListImgDiv img-fluid"
-                />
+                {raceImg ? (
+                  <Image
+                    src={raceImg}
+                    alt={card.race}
+                    className=" itemResultListImgDiv img-fluid"
+                  />
+                ) : null}
               </div>
             </Link>
           );

@@ -1,11 +1,11 @@
-import { allcardsOffset } from "@/actions/allcardsOffset";
-import Filtro from "./filter";
+import Filter from "./filter";
+import { allcardsfiltered } from "@/actions/allcardsfiltered";
 
-export default async function ListFilter() {
-  const res = await allcardsOffset(24, 0);
+export default async function FilterPage() {
+  const res = await allcardsfiltered(28, 0);
   return (
     <>
-      <Filtro cards={res} />
+      <Filter data={res?.data} error={res?.error} />
     </>
   );
 }

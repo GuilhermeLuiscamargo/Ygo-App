@@ -1,4 +1,5 @@
 "use client";
+import "../style/notFound.css";
 import Image from "next/image";
 import errorImg from "../../public/img/404.jpeg";
 

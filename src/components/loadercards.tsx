@@ -4,10 +4,10 @@ import { useInView } from "react-intersection-observer";
 import { allcardsOffset } from "@/actions/allcardsOffset";
 import { CardList } from "./cardlist";
 import { LoaderSpin } from "./loaderSpin";
-import { allcardsfill } from "@/actions/allcardsfill";
+import { allcardsfiltered } from "@/actions/allcardsfiltered";
 
-export function CarregarCards({ inicialPage, filter }: loadcards) {
-  const [cards, setCards] = useState<individualCard[]>([]);
+export function LoaderCards({ QtdCards, inicialPage, filter }: Iloadcards) {
+  const [cards, setCards] = useState<IindividualCard[]>([]);
   const [page, setPage] = useState(inicialPage);
   const [ref, inView] = useInView();
   const [loader, setLoader] = useState<boolean>(true);
@@ -17,17 +17,16 @@ export function CarregarCards({ inicialPage, filter }: loadcards) {
   const loadMoreCards = async () => {
     await delay(250);
     const nextPage = page;
-    const QtdCards = 24;
     if (filter) {
-      const res = await allcardsfill(QtdCards, nextPage, filter);
+      const res = await allcardsfiltered(QtdCards, nextPage, filter);
       const newCards = res?.data ? res.data : [];
 
-      setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
+      setCards((prevCards: IindividualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
       !newCards.length ? setLoader(!loader) : null;
     } else {
       const newCards = (await allcardsOffset(QtdCards, nextPage)) ?? [];
-      setCards((prevCards: individualCard[]) => [...prevCards, ...newCards]);
+      setCards((prevCards: IindividualCard[]) => [...prevCards, ...newCards]);
       setPage(nextPage + QtdCards);
       !newCards.length ? setLoader(!loader) : null;
     }

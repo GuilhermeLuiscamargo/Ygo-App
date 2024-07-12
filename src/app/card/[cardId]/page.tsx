@@ -10,13 +10,7 @@ import { getType } from "@/actions/getType";
 import { LuSwords, LuShield } from "react-icons/lu";
 import ParallaxImg from "./paralaxImg";
 
-interface props {
-  params: {
-    cardId: string;
-  };
-}
-
-export default async function AboutCard({ params }: props) {
+export default async function AboutCard({ params }: IaboutCardprop) {
   const cardUrlName = params.cardId;
   const card = await CardsbyId(cardUrlName);
   const atributteImg = getAtributteImg(card?.attribute);
@@ -26,7 +20,7 @@ export default async function AboutCard({ params }: props) {
       {card ? (
         <div
           key={card.id}
-          className="d-flex align-items-center container gap-3"
+          className="d-flex align-items-center  container gap-3"
         >
           <ParallaxImg
             img={card.card_images[0].image_url_small}
@@ -40,18 +34,26 @@ export default async function AboutCard({ params }: props) {
                 <span>Type</span>
                 <p>{card.type}</p>
               </li>
-              <li className="w-25">
-                <span>Typing</span>
-                <p>
-                  <Image
-                    src={raceImg}
-                    alt={card.race}
-                    className="iconCard"
-                    width={20}
-                  />{" "}
-                  {card.race}
-                </p>
-              </li>
+              {raceImg ? (
+                <li className="w-25">
+                  <span>Race</span>
+                  <p>
+                    <Image
+                      src={raceImg}
+                      alt={card.race}
+                      className="iconCard"
+                      width={20}
+                    />{" "}
+                    {card.race}
+                  </p>
+                </li>
+              ) : (
+                <li className="w-25">
+                  <span>Race</span>
+                  <p>{card.race}</p>
+                </li>
+              )}
+
               {card.archetype ? (
                 <li className="w-25">
                   <span>Archetype</span>
@@ -139,13 +141,13 @@ export default async function AboutCard({ params }: props) {
                 <div>
                   <span className="h5">[Pendulum Effect]</span>
                   <p>{card.pend_desc}</p>
-                  <span className="h5">[Efeito Monstro]</span>
+                  <span className="h5">[Monster Effect]</span>
                   <p>{card.monster_desc}</p>
                 </div>
               ) : (
                 <div>
                   <p>
-                    [Descrição/Efeito Monstro]
+                    [Description/Monster Effect]
                     <br /> {card.desc}
                   </p>
                 </div>
