@@ -18,7 +18,7 @@ export default function SearchResultList({ cardNames }: IsearchCardsProps) {
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}
             >
-              {raceImg ? (
+              {raceImg && (
                 <Image
                   src={card.img}
                   alt={card.name}
@@ -26,7 +26,8 @@ export default function SearchResultList({ cardNames }: IsearchCardsProps) {
                   width={70}
                   height={70}
                 />
-              ) : (
+              )}
+              {!raceImg && (
                 <Image
                   src={card.alternativeImg}
                   alt={card.name}
@@ -37,20 +38,20 @@ export default function SearchResultList({ cardNames }: IsearchCardsProps) {
               )}
               <p>{card.name}</p>
               <div className="d-flex gap-1">
-                {card.attribute ? (
+                {card.attribute && (
                   <Image
                     src={attributeImg}
                     alt={card.attribute}
                     className="itemResultListImgDiv img-fluid"
                   />
-                ) : null}
-                {raceImg ? (
+                )}
+                {raceImg && (
                   <Image
                     src={raceImg}
                     alt={card.race}
                     className=" itemResultListImgDiv img-fluid"
                   />
-                ) : null}
+                )}
               </div>
             </Link>
           );

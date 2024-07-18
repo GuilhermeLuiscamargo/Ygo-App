@@ -31,7 +31,7 @@ interface IcardsFiltered {
   data?: IindividualCard[];
   error?: string | undefined;
 }
-interface IfilterInputsObject {
+interface IfilterInputsObj {
   type?: string;
   atk?: string;
   def?: string;

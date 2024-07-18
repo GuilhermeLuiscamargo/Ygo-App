@@ -7,9 +7,6 @@ export default function CardSearch() {
       "https://db.ygoprodeck.com/api/v7/cardinfo.php"
     );
     const res: { data: IindividualCard[] } = await cardRes.json();
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
-
     let resFill = res.data
       .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()))
       .map((p) => {

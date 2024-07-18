@@ -11,43 +11,41 @@ export function CardList({ cards }: { cards: IindividualCard[] | undefined }) {
 
   return (
     <>
-      {cards
-        ? cards.map((card) => {
-            return (
-              <Link
-                href={`/card/${card.id}`}
-                title={card.name}
-                className="cardOfCardList flip-card flip-horizontal-left"
-                key={card.id}
-                onMouseOver={() => setOpen(card.id)}
-                onMouseOut={() => setOpen(0)}
-              >
-                {card.card_images[0].image_url ? (
-                  <div className="flip-card-inner">
-                    <div className="flip-card-front">
-                      <Image
-                        className="cardOfCardListImg "
-                        src={card.card_images[0].image_url}
-                        alt={card.name}
-                        width={150}
-                        height={220}
-                      />
-                    </div>
-                    <div className="flip-card-back">
-                      <ModalCard card={card} isOpen={open} />
-                    </div>
-                  </div>
-                ) : (
+      {cards &&
+        cards.map((card) => (
+          <Link
+            href={`/card/${card.id}`}
+            title={card.name}
+            className="cardOfCardList flip-card flip-horizontal-left"
+            key={card.id}
+            onMouseOver={() => setOpen(card.id)}
+            onMouseOut={() => setOpen(0)}
+          >
+            {card.card_images[0].image_url && (
+              <div className="flip-card-inner">
+                <div className="flip-card-front">
                   <Image
-                    className="loadingCardOfCardList img-fluid placeholder"
-                    src={loadingImg}
+                    className="cardOfCardListImg "
+                    src={card.card_images[0].image_url}
                     alt={card.name}
+                    width={150}
+                    height={220}
                   />
-                )}
-              </Link>
-            );
-          })
-        : null}
+                </div>
+                <div className="flip-card-back">
+                  <ModalCard card={card} isOpen={open} />
+                </div>
+              </div>
+            )}
+            {!card.card_images[0].image_url && (
+              <Image
+                className="loadingCardOfCardList img-fluid placeholder"
+                src={loadingImg}
+                alt={card.name}
+              />
+            )}
+          </Link>
+        ))}
     </>
   );
 }

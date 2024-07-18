@@ -13,7 +13,7 @@ export default function Filter({ data, error }: IcardsFiltered) {
     error: error,
   });
   const [filterInputsObject, setFilterInputsObject] =
-    useState<IfilterInputsObject>({
+    useState<IfilterInputsObj>({
       atk: "",
       def: "",
       level: "",
@@ -25,7 +25,6 @@ export default function Filter({ data, error }: IcardsFiltered) {
       archetype: "",
       format: "",
     });
-  const [filter, setFilter] = useState<string | undefined>("");
   const filteredCards = async (fill: string | undefined) => {
     const res = await allcardsfiltered(28, 0, fill);
     setFetchResponse(() => ({ data: res?.data, error: res?.error }));
@@ -46,7 +45,6 @@ export default function Filter({ data, error }: IcardsFiltered) {
       archetype: "",
       format: "",
     });
-    setFilter("");
     setFetchResponse(() => ({ data: undefined, error: undefined }));
     setTimeout(resetFetchData, 500);
   };
@@ -60,7 +58,6 @@ export default function Filter({ data, error }: IcardsFiltered) {
           onSubmit={(ev) => {
             ev.preventDefault();
             setFetchResponse(() => ({ data: undefined, error: undefined }));
-            setFilter(filterString);
             filteredCards(filterString);
           }}
         >
@@ -729,7 +726,7 @@ export default function Filter({ data, error }: IcardsFiltered) {
                 <option>War Rock</option>
                 <option>Watt</option>
                 <option>White</option>
-                <option>White Woods</option>
+                <option>White Forest</option>
                 <option>Wicked God</option>
                 <option>Wight</option>
                 <option>Wind-Up</option>
@@ -899,14 +896,16 @@ export default function Filter({ data, error }: IcardsFiltered) {
       </div>
 
       <div className="CardResultsFilterDiv w-75 overflow-auto text-center">
-        {fetchResponse.data ? (
+        {fetchResponse.data && (
           <div className="container-fluid d-flex flex-wrap column-gap-3 row-gap-4 pb-4 pt-3 align-self-center justify-content-center">
             <CardList cards={fetchResponse.data} />
-            <LoaderCards inicialPage={28} QtdCards={28} filter={filter} />
+            <LoaderCards inicialPage={28} QtdCards={28} filter={filterString} />
           </div>
-        ) : fetchResponse.error ? (
+        )}
+        {fetchResponse.error && (
           <p className=" text-warning h3">Carta não encontrada!!!</p>
-        ) : (
+        )}
+        {!fetchResponse.data && !fetchResponse.error && (
           <LoaderSpin classname="LoaderFilter" />
         )}
       </div>

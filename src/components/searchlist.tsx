@@ -13,11 +13,12 @@ function SearchList({
   const onChange = async () => {
     setCardNames(await search(searchString));
   };
+
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
   useEffect(() => {
-    search("vall").then((names) => setCardNames(names));
+    search("").then((names) => setCardNames(names));
   }, [search]);
   return (
     <div
@@ -48,7 +49,7 @@ function SearchList({
           <IoSearch />
         </button>
       </form>
-      {searchString === "" ? null : (
+      {!!searchString && (
         <div
           className="searchResultList overflow-auto w-25 mt-1 d-flex flex-column gap-2 "
           onClick={() => setSearchString("")}

@@ -39,11 +39,11 @@ export function LoaderCards({ QtdCards, inicialPage, filter }: Iloadcards) {
   return (
     <>
       <CardList cards={cards} />
-      {loader ? (
+      {loader && (
         <div className=" text-center w-100 " ref={ref}>
           <LoaderSpin classname="LoaderSpin" />
         </div>
-      ) : null}
+      )}
     </>
   );
 }

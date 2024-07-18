@@ -17,7 +17,7 @@ export default async function AboutCard({ params }: IaboutCardprop) {
   const raceImg = getType(card?.race);
   return (
     <main className="mainAboutCardTag container-fluid">
-      {card ? (
+      {card && (
         <div
           key={card.id}
           className="d-flex align-items-center  container gap-3"
@@ -34,7 +34,7 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                 <span>Type</span>
                 <p>{card.type}</p>
               </li>
-              {raceImg ? (
+              {raceImg && (
                 <li className="w-25">
                   <span>Race</span>
                   <p>
@@ -47,21 +47,20 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.race}
                   </p>
                 </li>
-              ) : (
+              )}
+              {!raceImg && (
                 <li className="w-25">
                   <span>Race</span>
                   <p>{card.race}</p>
                 </li>
               )}
-
-              {card.archetype ? (
+              {card.archetype && (
                 <li className="w-25">
                   <span>Archetype</span>
                   <p> {card.archetype}</p>
                 </li>
-              ) : null}
-
-              {card.attribute ? (
+              )}
+              {card.attribute && (
                 <li className="w-25">
                   <span>Attribute</span>
                   <p>
@@ -69,13 +68,14 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                       src={atributteImg}
                       alt={card.attribute}
                       className="iconCard"
-                    />{" "}
+                    />
+                    {"   "}
                     {card.attribute}
                   </p>
                 </li>
-              ) : null}
-              {(card.level && card.frameType === "xyz_pendulum") ||
-              card.frameType === "xyz" ? (
+              )}
+              {(card.frameType === "xyz_pendulum" ||
+                card.frameType === "xyz") && (
                 <li className="w-25">
                   <span>Rank</span>
                   <p>
@@ -83,7 +83,13 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.level}
                   </p>
                 </li>
-              ) : card.level ? (
+              )}
+              {!(
+                card.frameType === "xyz_pendulum" ||
+                card.frameType === "xyz" ||
+                card.frameType === "spell" ||
+                card.frameType === "trap"
+              ) && (
                 <li className="w-25 ">
                   <span>Level</span>
                   <p>
@@ -91,7 +97,8 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.level}
                   </p>
                 </li>
-              ) : card.linkval ? (
+              )}
+              {card.linkval && (
                 <li className="w-25">
                   <span>LinkVal</span>
                   <p>
@@ -99,9 +106,8 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.linkval}
                   </p>
                 </li>
-              ) : null}
-
-              {card.scale ? (
+              )}
+              {card.scale && (
                 <li className="w-25">
                   <span>Escala Pêndulo</span>
                   <p>
@@ -109,9 +115,8 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.scale}
                   </p>
                 </li>
-              ) : null}
-
-              {card.atk >= 0 && card.def >= 0 ? (
+              )}
+              {card.atk >= 0 && card.def >= 0 && (
                 <>
                   <li className="w-25">
                     <span>ATK</span>
@@ -126,7 +131,8 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     </p>
                   </li>
                 </>
-              ) : card?.atk >= 0 ? (
+              )}
+              {card?.atk >= 0 && card.def < 0 && (
                 <li className="w-25">
                   <span>ATK</span>
                   <p>
@@ -134,7 +140,7 @@ export default async function AboutCard({ params }: IaboutCardprop) {
                     {card.atk}
                   </p>
                 </li>
-              ) : null}
+              )}
             </ul>
             <div className="CardDesc">
               {card.pend_desc ? (
@@ -155,7 +161,8 @@ export default async function AboutCard({ params }: IaboutCardprop) {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+      {!card && (
         <div className="d-flex align-items-center justify-content-center container ">
           <ParallaxImg />
         </div>

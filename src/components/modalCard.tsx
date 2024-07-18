@@ -18,7 +18,7 @@ export default function ModalCard({ isOpen, card }: Imodal) {
           </strong>
         </div>
         <div className="attributeTypeRaceLineModal">
-          {card.frameType === "spell" || card.frameType === "trap" ? (
+          {(card.frameType === "spell" || card.frameType === "trap") && (
             <span className=" d-flex gap-3 align-items-center ">
               <p>{card.type}</p>
               <p>
@@ -26,36 +26,32 @@ export default function ModalCard({ isOpen, card }: Imodal) {
                 {card.race}
               </p>
             </span>
-          ) : card.attribute ? (
-            <>
-              <p>
-                <Image
-                  src={atributeImg}
-                  alt={card.attribute}
-                  className="iconModalImg"
-                />{" "}
-                {card.attribute}
-              </p>
-            </>
-          ) : (
-            <></>
+          )}
+          {card.attribute && (
+            <p>
+              <Image
+                src={atributeImg}
+                alt={card.attribute}
+                className="iconModalImg"
+              />{" "}
+              {card.attribute}
+            </p>
           )}
         </div>
-        {card.frameType !== "spell" && card.frameType !== "trap" ? (
+        {card.frameType !== "spell" && card.frameType !== "trap" && (
           <>
             <div className="levelRankScaleLineModal d-flex flex-column">
               <p>
                 [{card.race}/{card.type}]
               </p>
-              {card.frameType === "xyz" ? (
-                <>
-                  <p>
-                    {" "}
-                    <Image src={rank} alt="rank" className="iconModalImg" />
-                    {card.level}
-                  </p>
-                </>
-              ) : card.frameType === "xyz_pendulum" ? (
+              {card.frameType === "xyz" && (
+                <p>
+                  {" "}
+                  <Image src={rank} alt="rank" className="iconModalImg" />
+                  {card.level}
+                </p>
+              )}
+              {card.frameType === "xyz_pendulum" && (
                 <span className=" d-flex align-items-center justify-content-center gap-3">
                   <p>
                     <Image src={rank} alt="rank" className="iconModalImg" />
@@ -66,7 +62,8 @@ export default function ModalCard({ isOpen, card }: Imodal) {
                     {card.scale}
                   </p>
                 </span>
-              ) : card.level && card.scale >= 0 ? (
+              )}
+              {card.frameType !== "xyz_pendulum" && card.scale && (
                 <span className=" d-flex align-items-center justify-content-center gap-3">
                   <p>
                     <Image src={level} alt="level" className="iconModalImg" />
@@ -77,32 +74,39 @@ export default function ModalCard({ isOpen, card }: Imodal) {
                     {card.scale}
                   </p>
                 </span>
-              ) : card.level ? (
-                <span className=" d-flex align-items-center justify-content-center ">
-                  <p>
-                    <Image src={level} alt="level" className="iconModalImg" />
-                    {card.level}
-                  </p>
-                </span>
-              ) : null}
+              )}
+
+              {!card.scale &&
+                card.frameType !== "xyz" &&
+                !card.linkval &&
+                card.level && (
+                  <span className=" d-flex align-items-center justify-content-center ">
+                    <p>
+                      <Image src={level} alt="level" className="iconModalImg" />
+                      {card.level}
+                    </p>
+                  </span>
+                )}
             </div>
             <div className="atkDefLineModal">
-              {card.linkval ? (
+              {card.linkval && (
                 <p>
                   ATK/{card.atk}{" "}
                   <Image src={linkMark} alt="link" className="iconModalImg" />{" "}
                   {card.linkval}
                 </p>
-              ) : card.atk || card.atk >= 0 ? (
+              )}
+
+              {card.atk >= 0 && card.def >= 0 && (
                 <p>
                   ATK/{card.atk} DEF/{card.def}
                 </p>
-              ) : null}
+              )}
             </div>
           </>
-        ) : null}
+        )}
         <div className="descriptionCardLineModal w-100">
-          {card.pend_desc ? (
+          {card.pend_desc && (
             <>
               <p>
                 <strong>[Pendulum effect]</strong>
@@ -116,7 +120,8 @@ export default function ModalCard({ isOpen, card }: Imodal) {
                 {card.monster_desc}
               </p>
             </>
-          ) : (
+          )}
+          {!card.pend_desc && (
             <>
               <p>
                 <strong>[Description]</strong>
