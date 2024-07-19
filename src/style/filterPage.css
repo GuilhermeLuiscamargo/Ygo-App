@@ -19,3 +19,32 @@
 .LoaderFilter {
   width: 80px;
 }
+/*media query*/
+@media screen and (max-width: 768px) {
+  .filterForm {
+    padding: 0.5rem !important;
+  }
+  .inputDivSelects {
+    flex-direction: column;
+    gap: 0.3rem !important;
+  }
+  .inputDivSelects div {
+    min-width: 100%;
+  }
+  .valuesDivSelect {
+    gap: 0.2rem !important;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .valuesDivSelect div {
+    min-width: 32%;
+  }
+  .btnFormDiv {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 572px) {
+  .mainFiltroTag {
+    margin-top: 2rem;
+  }
+}

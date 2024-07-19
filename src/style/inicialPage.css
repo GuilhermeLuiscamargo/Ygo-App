@@ -5,3 +5,9 @@
   border: 0.2rem solid #ffca2c;
   border-radius: 0.3rem;
 }
+/*media query*/
+@media screen and (max-width: 572px) {
+  .inicioMainTag {
+    margin-top: 2rem;
+  }
+}

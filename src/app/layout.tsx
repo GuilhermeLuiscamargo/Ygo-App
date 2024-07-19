@@ -29,15 +29,15 @@ export default function RootLayout({
       </head>
       <body>
         <div className="mainContainer container-fluid d-flex flex-column justify-content-between align-items-center">
-          <header className="sticky-top">
+          <header>
             <nav className="navbar p-0">
               <Image
                 src={logo}
                 alt="logo"
-                className="img-fluid"
+                className="logo img-fluid"
                 priority={true}
               />
-              <div className="d-flex gap-5 h5">
+              <div className="links d-flex gap-5 h5">
                 <Link href={"/"} className="link-warning">
                   Start
                 </Link>
@@ -50,14 +50,14 @@ export default function RootLayout({
           </header>
           {children}
           <footer className="footerLayout w-100 bg-warning container-fluid d-flex justify-content-center  p-3">
-            <div className=" w-50 d-flex justify-content-between">
+            <div className="footerlinkdiv w-50 d-flex justify-content-between">
               <div className="Contato d-flex flex-column">
                 <h2 className="">Contact</h2>
                 <a
                   target="_blank"
                   href="mailto:guilhermeluiscamargoneto@gmail.com"
                 >
-                  Gmail-guilhermeluiscamargoneto@gmail.com
+                  guilhermeluiscamargoneto@gmail.com
                 </a>
                 <a
                   target="_blank"

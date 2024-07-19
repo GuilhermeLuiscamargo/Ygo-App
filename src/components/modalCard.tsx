@@ -11,7 +11,7 @@ export default function ModalCard({ isOpen, card }: Imodal) {
   const typeImg = getType(card.race);
   if (isOpen === card.id) {
     return (
-      <div className="SpanModalCard  text-white">
+      <div className="ModalCard  text-white overflow-auto">
         <div className="nameLineModal w-100">
           <strong>
             <p className=" align-self-center">{card.name}</p>

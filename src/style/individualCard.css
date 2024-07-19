@@ -26,3 +26,29 @@
 .parallaxImgError {
   width: 300px;
 }
+/*media query */
+
+@media screen and (max-width: 768px) {
+  .mainAboutCardTag {
+    margin-top: 5rem;
+  }
+  .mainAboutCardTag div {
+    flex-direction: column;
+  }
+  .parallaxImg {
+    width: 180px;
+  }
+  .cardInfoDiv {
+    padding: 0;
+  }
+  .tableInfo {
+    min-width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    padding: 0;
+  }
+  .tableInfo li {
+    min-width: 100%;
+  }
+}
