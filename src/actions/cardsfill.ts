@@ -1,4 +1,4 @@
-export function fillstring(inputs: IfilterInputsObject) {
+export function fillstring(inputs: IfilterInputsObj) {
   const filtros: string[] = [];
   if (inputs) {
     if (inputs.archetype) {
