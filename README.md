@@ -1,6 +1,6 @@
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=f0b915&height=120&section=header&reversal=true">
 
-### Da uma olhada -><a target="blank" href="">🖥️</a>
+### Da uma olhada -><a target="blank" href="https://ygo-app.vercel.app">🖥️</a>
 
 <font color=FFC107><h1>Como instalar</h1></font>
 
