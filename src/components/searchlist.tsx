@@ -21,7 +21,13 @@ function SearchList({
     search("").then((names) => setCardNames(names));
   }, [search]);
   return (
-    <div className="searchBarDiv w-50 me-2 ">
+    <div
+      className="searchBarDiv w-25 me-2 "
+      onBlur={async () => {
+        await delay(250);
+        setSearchString("");
+      }}
+    >
       <form className=" d-flex input-group">
         <input
           className=" form-control"
@@ -45,7 +51,7 @@ function SearchList({
       </form>
       {!!searchString && (
         <div
-          className="searchResultList overflow-auto w-50 mt-1 d-flex flex-column gap-2 "
+          className="searchResultList overflow-auto w-25 mt-1 d-flex flex-column gap-2 "
           onClick={() => setSearchString("")}
         >
           <SearchResultList cardNames={cardNames} />

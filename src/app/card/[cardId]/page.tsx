@@ -9,6 +9,7 @@ import { getAtributteImg } from "@/actions/getAtributte";
 import { getType } from "@/actions/getType";
 import { LuSwords, LuShield } from "react-icons/lu";
 import ParallaxImg from "./paralaxImg";
+import { Suspense } from "react";
 
 export default async function AboutCard({ params }: IaboutCardprop) {
   const cardUrlName = params.cardId;
@@ -163,7 +164,7 @@ export default async function AboutCard({ params }: IaboutCardprop) {
         </div>
       )}
       {!card && (
-        <div className="d-flex align-items-center justify-content-center container ">
+        <div className="ParralaxErrorDiv d-flex align-items-center justify-content-center container ">
           <ParallaxImg />
         </div>
       )}

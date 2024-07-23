@@ -7,7 +7,7 @@ import Parallax from "react-next-parallax";
 
 export default function NotFound() {
   return (
-    <main className="container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5">
+    <main className="ParralaximgNotFoundDiv container-fluid d-flex justify-content-center pt-4 pb-4 ">
       <Parallax
         scale={1.1}
         spotGlareSizePercent={120}
@@ -15,7 +15,7 @@ export default function NotFound() {
       >
         <Image
           src={errorImg}
-          className="parallaxImgError img-fluid"
+          className="parallaxImgNotFound img-fluid"
           alt="Aconteceu um Erro"
         />
       </Parallax>

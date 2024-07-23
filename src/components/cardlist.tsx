@@ -8,7 +8,6 @@ import { useState } from "react";
 
 export function CardList({ cards }: { cards: IindividualCard[] | undefined }) {
   const [open, setOpen] = useState<number>(0);
-
   return (
     <>
       {cards &&
@@ -17,7 +16,7 @@ export function CardList({ cards }: { cards: IindividualCard[] | undefined }) {
             href={`/card/${card.id}`}
             title={card.name}
             className="cardOfCardList flip-card flip-horizontal-left"
-            key={card.id}
+            key={`CardKeyOfCardList-${card.id}`}
             onMouseOver={() => setOpen(card.id)}
             onMouseOut={() => setOpen(0)}
           >

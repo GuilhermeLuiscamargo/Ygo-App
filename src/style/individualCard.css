@@ -27,7 +27,11 @@
   width: 300px;
 }
 /*media query */
-
+@media screen and (max-width: 995px) {
+  .tableInfo {
+    min-width: 100%;
+  }
+}
 @media screen and (max-width: 768px) {
   .mainAboutCardTag {
     margin-top: 5rem;
@@ -50,5 +54,21 @@
   }
   .tableInfo li {
     min-width: 100%;
+  }
+  .ParralaxErrorDiv {
+    margin-bottom: 3rem;
+  }
+  .parallaxImgError {
+    width: 280px;
+  }
+}
+@media screen and (max-width: 664px) {
+  .parallaxImgError {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .parallaxImgError {
+    width: 210px;
   }
 }

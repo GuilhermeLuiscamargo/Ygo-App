@@ -51,7 +51,7 @@ export default function Filter({ data, error }: IcardsFiltered) {
   const filterString = fillstring(filterInputsObject);
   return (
     <main className="mainFiltroTag container-fluid d-flex flex-column  align-items-center pt-4 pb-4 gap-5 ">
-      <div className="formDivFilterTag  w-100">
+      <div className="formDivFilterTag  w-75">
         <form
           action="submit"
           className="filterForm w-100 text-warning d-flex flex-column gap-3 p-3 "

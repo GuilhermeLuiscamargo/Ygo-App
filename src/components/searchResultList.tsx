@@ -13,7 +13,7 @@ export default function SearchResultList({ cardNames }: IsearchCardsProps) {
           return (
             <Link
               href={`/card/${card.id}`}
-              key={`search${card.id}`}
+              key={`searchCardKey-${card.id}`}
               type="submit"
               className="itemResultList d-flex justify-content-between align-items-center link-warning"
               title={card.name}

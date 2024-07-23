@@ -1,5 +1,7 @@
 "use client";
 import Parallax from "react-next-parallax";
+import NotFoundImg from "../../../../public/img/NotFoundCard.jpeg";
+import Image from "next/image";
 
 export default function ParallaxImg({ img, name }: IimgParalax) {
   return (
@@ -10,7 +12,13 @@ export default function ParallaxImg({ img, name }: IimgParalax) {
           spotGlareSizePercent={130}
           shadow="0 0 2rem rgba(218, 165, 32, 0.5)"
         >
-          <img className="parallaxImg img-fluid" src={img} alt={name} />
+          <Image
+            className="parallaxImg img-fluid"
+            src={img}
+            alt={name}
+            width={250}
+            height={250}
+          />
         </Parallax>
       ) : (
         <Parallax
@@ -18,10 +26,11 @@ export default function ParallaxImg({ img, name }: IimgParalax) {
           spotGlareSizePercent={120}
           shadow="0 0 2.5rem rgba(218, 165, 32, 2)"
         >
-          <img
+          <Image
             className="parallaxImgError img-fluid"
-            src="/img/NotFoundCard.jpeg"
+            src={NotFoundImg}
             alt="aconteceu um erro "
+            priority={true}
           />
         </Parallax>
       )}
